@@ -1,28 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   receive_adr.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: afaddoul <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/05/24 00:23:29 by afaddoul          #+#    #+#             */
-/*   Updated: 2019/06/12 09:38:31 by afaddoul         ###   ########.fr       */
+/*   Created: 2019/06/07 11:44:35 by afaddoul          #+#    #+#             */
+/*   Updated: 2019/06/12 09:36:11 by afaddoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/libftprintf.h"
 
-int main()
+t_data		**receive_adr(t_shape *lst, va_list *ap,int len)
 {
-	int x = 101010;
-	char  *str;
-	char g = 'm';
-	//double z = 12.236;
+	t_data	**tab;
+	t_data	*args;
+	int		i;
 
-	str = ft_strdup("achraf");
-	//printf("4768%3$dABCD%1$sABCD%4$cABC%2$f", str, z, x, g);
-	//ft_printf("4768%3$2dABCD%1$sABCD%4$cABC%2$f", x, str, g, z);
-	ft_printf("%2$d---%3$-0.*hf\n",x);
-	g++;
-	return (0);
+	i = 0;
+	tab = (t_data**)malloc(sizeof(t_data*) * (len + 1));
+	while (lst)
+	{
+		if (lst->conv_flag == 1)
+		{
+			args = add_node(args, lst->conv);
+			args = parse_arg_dlr(args, ap);
+			tab[i] = args;
+			i++;
+		}
+		lst = lst->next;
+	}
+	tab[i] = 0;
+	return (tab);
 }

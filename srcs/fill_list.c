@@ -6,7 +6,7 @@
 /*   By: afaddoul <afaddoul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/18 21:22:24 by afaddoul          #+#    #+#             */
-/*   Updated: 2019/06/04 04:56:16 by afaddoul         ###   ########.fr       */
+/*   Updated: 2019/06/09 15:16:01 by afaddoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,6 +102,5 @@ t_shape		*fill_list(t_shape *head, char *str)
 			return (head);
 		i++;
 	}
-	free(arg);
 	return (head);
 }

@@ -1,28 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   add_node_args.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: afaddoul <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/05/24 00:23:29 by afaddoul          #+#    #+#             */
-/*   Updated: 2019/06/12 09:38:31 by afaddoul         ###   ########.fr       */
+/*   Created: 2019/06/08 17:56:57 by afaddoul          #+#    #+#             */
+/*   Updated: 2019/06/09 15:07:06 by afaddoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/libftprintf.h"
 
-int main()
+t_data				*add_node(t_data *head, char cv)
 {
-	int x = 101010;
-	char  *str;
-	char g = 'm';
-	//double z = 12.236;
+	t_data			*node;
 
-	str = ft_strdup("achraf");
-	//printf("4768%3$dABCD%1$sABCD%4$cABC%2$f", str, z, x, g);
-	//ft_printf("4768%3$2dABCD%1$sABCD%4$cABC%2$f", x, str, g, z);
-	ft_printf("%2$d---%3$-0.*hf\n",x);
-	g++;
-	return (0);
+	node = (t_data*)malloc(sizeof(t_data));
+	node->conv = cv;
+	if (head == NULL)
+	{
+		node->next = NULL;
+		return (node);
+	}
+	else
+	{
+		head->next = node;
+		node->next = NULL;
+	}
+	return (node);
 }

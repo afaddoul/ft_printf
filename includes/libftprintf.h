@@ -6,7 +6,7 @@
 /*   By: afaddoul <afaddoul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/11 18:11:42 by afaddoul          #+#    #+#             */
-/*   Updated: 2019/06/04 05:25:14 by afaddoul         ###   ########.fr       */
+/*   Updated: 2019/06/09 15:08:22 by afaddoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ typedef	struct				s_flg
 	int						f_flg;
 }							t_flg;
 /*
- * 0:'-'|1:'+'|2:'0'|3:' '|4:'#' --->'X'
+ ** 0:'-'|1:'+'|2:'0'|3:' '|4:'#' --->'X'
  */
 typedef	struct				s_field_width
 {
@@ -51,7 +51,7 @@ typedef	struct				s_field_width
 	int						f_w_flg;
 }							t_field_width;
 /*
- * -1 for * | 0 not found | 1 field width
+ ** -1 for * | 0 not found | 1 field width
  */
 typedef	struct				s_pre
 {
@@ -59,7 +59,7 @@ typedef	struct				s_pre
 	int						pre_flg;
 }							t_pre;
 /*
- * -1 for * | 0 not found | 1 .pre
+ ** -1 for * | 0 not found | 1 .pre
  */
 typedef struct				s_len_mod
 {
@@ -69,6 +69,7 @@ typedef struct				s_len_mod
 
 typedef	struct				s_data
 {
+	char					conv;
 	int						c;
 	char					*s;
 	void					*p;
@@ -79,6 +80,7 @@ typedef	struct				s_data
 	unsigned int			x;
 	unsigned int			big_x;
 	double					f;
+	struct s_data			*next;
 }							t_data;
 
 typedef	struct				s_shape
@@ -109,5 +111,8 @@ t_shape						*parse_arg(t_shape *lst, va_list *ap);
 t_arg						*rec_d(char *str, t_arg *arg, int start, int end);
 t_shape						*swap_dlr(t_shape *lst);
 t_shape						*parse_data(t_shape *node, char *str);
+t_data						**receive_adr(t_shape *lst, va_list *ap,int len);
+t_data						*add_node(t_data *head, char cv);
+t_data						*parse_arg_dlr(t_data *lst, va_list *ap);
 
 #endif

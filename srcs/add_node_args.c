@@ -6,18 +6,19 @@
 /*   By: afaddoul <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/08 17:56:57 by afaddoul          #+#    #+#             */
-/*   Updated: 2019/06/09 15:07:06 by afaddoul         ###   ########.fr       */
+/*   Updated: 2019/06/12 20:32:46 by afaddoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/libftprintf.h"
 
-t_data				*add_node(t_data *head, char cv)
+t_tmp_data				*add_node(t_tmp_data *head, char cv, int dlr)
 {
-	t_data			*node;
+	t_tmp_data			*node;
 
-	node = (t_data*)malloc(sizeof(t_data));
+	node = (t_tmp_data*)malloc(sizeof(t_tmp_data));
 	node->conv = cv;
+	node->dlr = dlr;
 	if (head == NULL)
 	{
 		node->next = NULL;

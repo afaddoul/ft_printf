@@ -6,7 +6,7 @@
 /*   By: afaddoul <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/02 22:02:04 by afaddoul          #+#    #+#             */
-/*   Updated: 2019/06/07 11:33:58 by afaddoul         ###   ########.fr       */
+/*   Updated: 2019/06/13 21:07:20 by afaddoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ t_shape		*ft_is_dlr_or_fw(t_shape *node, char *str, int *i)
 
 t_shape		*ft_is_precision(t_shape *node, char *str, int *i)
 {
-	char 	*s;
+	char	*s;
 
 	s = ft_strnew(0);
 	(*i)++;
@@ -84,7 +84,7 @@ t_shape		*ft_is_len_mod(t_shape *node, char *str, int *i)
 		node->l_m.l_mod[0] = 'h';
 		node->l_m.l_mod[1] = 'h';
 	}
-	else if(str[*i] == 'l' && str[((*i) + 1)] == 'l')
+	else if (str[*i] == 'l' && str[((*i) + 1)] == 'l')
 	{
 		node->l_m.l_mod[0] = 'l';
 		node->l_m.l_mod[1] = 'l';
@@ -100,7 +100,7 @@ t_shape		*ft_is_len_mod(t_shape *node, char *str, int *i)
 
 t_shape		*parse_data(t_shape *node, char *str)
 {
-	int 	i;
+	int		i;
 
 	i = 1;
 	while (str[i])
@@ -113,7 +113,7 @@ t_shape		*parse_data(t_shape *node, char *str)
 		if (str[i] >= '1' && str[i] <= '9')
 			node = ft_is_dlr_or_fw(node, str, &i);
 		if (str[i] == '.' && str[i + 1] != '*')
-			node = ft_is_precision(node , str, &i);
+			node = ft_is_precision(node, str, &i);
 		if (str[i] == 'h' || str[i] == 'l' || str[i] == 'L')
 			node = ft_is_len_mod(node, str, &i);
 		i++;

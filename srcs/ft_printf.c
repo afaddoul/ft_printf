@@ -6,7 +6,7 @@
 /*   By: afaddoul <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/24 00:15:17 by afaddoul          #+#    #+#             */
-/*   Updated: 2019/06/12 09:36:51 by afaddoul         ###   ########.fr       */
+/*   Updated: 2019/06/13 21:24:42 by afaddoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,18 +19,32 @@ int		ft_printf(const char *format, ...)
 	t_shape 	*tmp;
 	char 		*frm;
 	int 		i;
+	int 		j;//test
+	t_tmp_data 	**tab;//test
 
 	lst = NULL;
 	i = 1;
+	j = 0;
 	va_start(ap, format);
 	frm = ft_strdup((char*)(format));
 	lst = fill_list(lst, frm);
 	tmp = lst;
 	printf("lst_len:%d\n", lst->lst_len);
+	printf("test-------------\n");
+	tab = cp_data(tmp, lst->lst_len);
+	while (tab[j])
+	{
+		printf("|dlr:%d---><---conv:%c|\n", tab[j]->dlr, tab[j]->conv);
+		j++;
+	}
+	/*
+	 * sort tab by sorting the array's pointers by dlr val with the merge sort
+	  */
+	printf("-------------test\n");
 	while (lst)
 	{
-		if (lst->conv_flag == 1)
-			{
+		//if (lst->conv_flag == 1)
+			//{
 		printf("adr:%p\n", lst);
 		printf("->node:%d<-\n", i);
 		printf("----------------------\n");
@@ -52,6 +66,7 @@ int		ft_printf(const char *format, ...)
 		printf("L_M_|%s|\n", lst->l_m.l_mod);
 		printf("conv:|%c|\n", lst->conv);
 		printf("------\n");
+		lst->arg.d = 3;
 		printf("arg.d|%d|\n", lst->arg.d);
 		printf("arg.s|%s|\n", lst->arg.s);
 		printf("arg.i|%d|\n", lst->arg.i);
@@ -61,7 +76,7 @@ int		ft_printf(const char *format, ...)
 		i++;
 		if (lst->next)
 			printf("     |\n     |\n     |\n     |\n     |\n     |\n     |\n");
-		}
+		//}
 		printf("\n");
 		lst = lst->next;
 	}

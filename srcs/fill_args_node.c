@@ -1,36 +1,51 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   receive_adr.c                                      :+:      :+:    :+:   */
+/*   fill_args_node.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: afaddoul <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/06/07 11:44:35 by afaddoul          #+#    #+#             */
-/*   Updated: 2019/06/12 15:50:14 by afaddoul         ###   ########.fr       */
+/*   Created: 2019/06/12 15:19:10 by afaddoul          #+#    #+#             */
+/*   Updated: 2019/06/13 22:15:17 by afaddoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/libftprintf.h"
 
-t_data		**receive_adr(t_shape *lst, va_list *ap,int len)
+void			sort_tab(int *arr, t_tmp_data **tab,int len)
 {
-	t_data	**tab;
-	t_data	*args;
-	int		i;
+	int			i;
 
 	i = 0;
-	tab = (t_data**)malloc(sizeof(t_data*) * (len + 1));
+	merge_sort(arr, 0, (len - 1));
+	while (i < len)
+	{
+		tab[i]->dlr = arr[i];
+		i++;
+	}
+}
+
+t_tmp_data		**cp_data(t_shape *lst, int len)
+{
+	t_tmp_data	**tab;
+	t_tmp_data	*args;
+	int			*arr;
+	int			i;
+
+	i = 0;
+	args = NULL;
+	tab = (t_tmp_data**)malloc(sizeof(t_tmp_data*) * len + 1);
+	arr = (int*)malloc(sizeof(int) * len);
 	while (lst)
 	{
 		if (lst->conv_flag == 1)
 		{
-			args = add_node(args, lst->conv);
-			args = parse_arg_dlr(args, ap);
-			tab[i] = args;
-			i++;
+			args = add_node(args, lst->conv, lst->d.d_val);
+			arr[i] = args->dlr;
+			tab[i++] = args;
 		}
 		lst = lst->next;
 	}
-	tab[i] = 0;
+	sort_tab(arr, tab, len);
 	return (tab);
 }

@@ -6,7 +6,7 @@
 /*   By: afaddoul <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/13 20:49:54 by afaddoul          #+#    #+#             */
-/*   Updated: 2019/06/13 21:56:59 by afaddoul         ###   ########.fr       */
+/*   Updated: 2019/06/14 14:51:20 by afaddoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 ** cp data to left array and right array
 */
 
-void			cp_data_array1(int *arr, t_points *arrs, t_const *optim,
+void			cp_data_array1(t_tmp_data **arr, t_points *arrs, t_const *optim,
 		int *i)
 {
 	i[0] = 0;
@@ -27,7 +27,7 @@ void			cp_data_array1(int *arr, t_points *arrs, t_const *optim,
 	}
 }
 
-void			cp_data_array2(int *arr, t_points *arrs, t_const *optim,
+void			cp_data_array2(t_tmp_data **arr, t_points *arrs, t_const *optim,
 		int *i)
 {
 	i[1] = 0;
@@ -42,11 +42,12 @@ void			cp_data_array2(int *arr, t_points *arrs, t_const *optim,
 **Merge the both arrays into arr
 */
 
-void			merge_arrays(int *arr, t_points *arrs, t_const *optim, int *i)
+void			merge_arrays(t_tmp_data **arr, t_points *arrs, t_const *optim,
+		int *i)
 {
 	while (i[0] < (optim->m - optim->l + 1) && i[1] < (optim->r - optim->m))
 	{
-		if (arrs->left[i[0]] <= arrs->right[i[1]])
+		if (arrs->left[i[0]]->dlr <= arrs->right[i[1]]->dlr)
 			arr[i[2]] = arrs->left[(i[0]++)];
 		else
 			arr[i[2]] = arrs->right[(i[1]++)];

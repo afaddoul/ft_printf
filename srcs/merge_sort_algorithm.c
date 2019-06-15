@@ -6,13 +6,13 @@
 /*   By: afaddoul <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/12 13:24:56 by afaddoul          #+#    #+#             */
-/*   Updated: 2019/06/13 21:34:26 by afaddoul         ###   ########.fr       */
+/*   Updated: 2019/06/14 14:47:06 by afaddoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/libftprintf.h"
 
-void			merge(int *arr, int l, int m, int r)
+void			merge(t_tmp_data **arr, int l, int m, int r)
 {
 	t_points	*arrs;
 	t_const		optim;
@@ -24,8 +24,8 @@ void			merge(int *arr, int l, int m, int r)
 	optim.n1 = optim.m - optim.l + 1;
 	optim.n2 = optim.r - optim.m;
 	arrs = (t_points*)malloc(sizeof(t_points));
-	arrs->left = (int*)malloc(sizeof(int) * optim.n1);
-	arrs->right = (int*)malloc(sizeof(int) * optim.n2);
+	arrs->left = (t_tmp_data **)malloc(sizeof(t_tmp_data *) * optim.n1);
+	arrs->right = (t_tmp_data **)malloc(sizeof(t_tmp_data *) * optim.n2);
 	cp_data_array1(arr, arrs, &optim, &i[0]);
 	cp_data_array2(arr, arrs, &optim, &i[1]);
 	init_idx(optim.l, i);
@@ -41,7 +41,7 @@ void			merge(int *arr, int l, int m, int r)
 	multi_free(3, arrs->left, arrs->right, arrs);
 }
 
-void			merge_sort(int *arr, int l, int r)
+void			merge_sort(t_tmp_data **arr, int l, int r)
 {
 	int			m;
 

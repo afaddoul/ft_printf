@@ -6,7 +6,7 @@
 /*   By: afaddoul <afaddoul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/11 18:11:42 by afaddoul          #+#    #+#             */
-/*   Updated: 2019/06/13 21:37:52 by afaddoul         ###   ########.fr       */
+/*   Updated: 2019/06/15 11:49:45 by afaddoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,27 @@
 # include <unistd.h>
 # include <stdlib.h>
 
+typedef	struct				s_tmp_data
+{
+	char					conv;
+	int						dlr;
+	int						c;
+	char					*s;
+	void					*p;
+	int						d;
+	int						i;
+	unsigned int			u;
+	unsigned int			o;
+	unsigned int			x;
+	unsigned int			big_x;
+	double					f;
+	struct s_tmp_data		*next;
+}							t_tmp_data;
 /*
 **-----------------------*
 **Merge sort struct
 **-----------------------*
 */
-
 typedef struct				s_const
 {
 	int						m;
@@ -36,14 +51,12 @@ typedef struct				s_const
 
 typedef struct				s_points
 {
-	int						*left;
-	int						*right;
+	t_tmp_data				**left;
+	t_tmp_data				**right;
 }							t_points;
-
 /*
 **-----------------------*
 */
-
 typedef struct				s_arg
 {
 	char					*buff;
@@ -62,14 +75,15 @@ typedef struct				s_dlr
 	int						dlr_flg;
 }							t_dlr;
 
+/*
+** flg_type_per_index ~ 0:'-'|||1:'+'|||2:'0'|||3:' '||||4:'#' ~
+*/
 typedef	struct				s_flg
 {
 	char					flg[5];
 	int						f_flg;
 }							t_flg;
-/*
-** flg_type_per_index ~ 0:'-'|||1:'+'|||2:'0'|||3:' '||||4:'#' ~
-*/
+
 typedef	struct				s_field_width
 {
 	int						f_w;
@@ -91,24 +105,6 @@ typedef struct				s_len_mod
 	char					l_mod[2];
 	int						l_m_flg;
 }							t_len_mod;
-
-typedef	struct				s_tmp_data
-{
-	char					conv;
-	int						dlr;
-	int						c;
-	char					*s;
-	void					*p;
-	int						d;
-	int						i;
-	unsigned int			u;
-	unsigned int			o;
-	unsigned int			x;
-	unsigned int			big_x;
-	double					f;
-	struct s_tmp_data		*next;
-}							t_tmp_data;
-
 typedef	struct				s_data
 {
 	int						c;
@@ -141,7 +137,7 @@ typedef	struct				s_shape
 }							t_shape;
 
 int							ft_printf(const char *format, ...);
-char						*ft_joinchar(char const *s1, char c);
+char						*ft_joinchar(char *s1, char c);
 t_shape						*add_shape(t_shape *head, int flag, t_arg *arg);
 t_shape						*fill_node(t_shape *node, t_arg *arg,
 		int index, int flag);
@@ -153,17 +149,20 @@ t_shape						*swap_dlr(t_shape *lst);
 t_shape						*parse_data(t_shape *node, char *str);
 t_data						**receive_adr(t_shape *lst, va_list *ap, int len);
 t_tmp_data					*add_node(t_tmp_data *head, char cv, int dlr);
-t_data						*parse_arg_dlr(t_data *lst, va_list *ap);
 t_tmp_data					**cp_data(t_shape *lst, int len);
-void						cp_data_array1(int *arr, t_points *arrs,
+void						cp_data_array1(t_tmp_data **arr, t_points *arrs,
 		t_const *optim, int *i);
-void						cp_data_array2(int *arr, t_points *arrs,
+void						cp_data_array2(t_tmp_data **arr, t_points *arrs,
 		t_const *optim, int *i);
-void						merge_arrays(int *arr, t_points *arrs,
+void						merge_arrays(t_tmp_data **arr, t_points *arrs,
 		t_const *optim, int *i);
 void						multi_free(int count, ...);
 void						init_idx(int l, int *i);
-void						merge(int *arr, int l, int m, int r);
-void						merge_sort(int *arr, int l, int r);
+void						merge(t_tmp_data **arr, int l, int m, int r);
+void						merge_sort(t_tmp_data **arr, int l, int r);
+t_tmp_data					**fill_sorted_arr(t_tmp_data **tab, va_list *ap);
+t_tmp_data					**parse_arg_dlr(t_tmp_data **tab, va_list *ap,
+		int index);
+void						receive_dlr_args(t_shape *lst, t_tmp_data **tab);
 
 #endif

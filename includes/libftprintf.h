@@ -6,7 +6,7 @@
 /*   By: afaddoul <afaddoul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/11 18:11:42 by afaddoul          #+#    #+#             */
-/*   Updated: 2019/06/15 11:49:45 by afaddoul         ###   ########.fr       */
+/*   Updated: 2019/06/20 19:26:42 by afaddoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ typedef struct				s_arg
 	char					cv;
 }							t_arg;
 /*
-** 0: not found | 1: found0: not found | 1: found
+** 0: not found | 1: found
 */
 typedef struct				s_dlr
 {
@@ -105,6 +105,7 @@ typedef struct				s_len_mod
 	char					l_mod[2];
 	int						l_m_flg;
 }							t_len_mod;
+
 typedef	struct				s_data
 {
 	int						c;
@@ -132,6 +133,7 @@ typedef	struct				s_shape
 	char					*shape;
 	struct s_data			arg;
 	int						lst_len;
+	int						cv_len;
 	struct s_shape			*next;
 	struct s_shape			*prev;
 }							t_shape;
@@ -150,10 +152,10 @@ t_shape						*parse_data(t_shape *node, char *str);
 t_data						**receive_adr(t_shape *lst, va_list *ap, int len);
 t_tmp_data					*add_node(t_tmp_data *head, char cv, int dlr);
 t_tmp_data					**cp_data(t_shape *lst, int len);
-void						cp_data_array1(t_tmp_data **arr, t_points *arrs,
-		t_const *optim, int *i);
-void						cp_data_array2(t_tmp_data **arr, t_points *arrs,
-		t_const *optim, int *i);
+void						cp_data_array_right(t_tmp_data **arr,
+		t_points *arrs, t_const *optim, int *i);
+void						cp_data_array_left(t_tmp_data **arr,
+		t_points *arrs, t_const *optim, int *i);
 void						merge_arrays(t_tmp_data **arr, t_points *arrs,
 		t_const *optim, int *i);
 void						multi_free(int count, ...);
@@ -164,5 +166,18 @@ t_tmp_data					**fill_sorted_arr(t_tmp_data **tab, va_list *ap);
 t_tmp_data					**parse_arg_dlr(t_tmp_data **tab, va_list *ap,
 		int index);
 void						receive_dlr_args(t_shape *lst, t_tmp_data **tab);
+int							dlr_detector(t_shape *lst);
+t_shape						*realloc_shape(t_shape *node, char *tmp);
+t_shape						*checker(t_shape *lst);
+t_shape						*dispatcher(t_shape *node, int i);
+t_shape						*checker(t_shape *lst);
+int							ret_counter(t_shape *lst);
+void						print_shapes(t_shape *lst);
+/*
+**cov_c
+*/
+t_shape						*conv_c(t_shape *node);
+void						print_conv_c(t_shape *node);
+int							conv_c_len(t_shape *node);
 
 #endif

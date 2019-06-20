@@ -6,7 +6,7 @@
 /*   By: afaddoul <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/12 13:24:56 by afaddoul          #+#    #+#             */
-/*   Updated: 2019/06/14 14:47:06 by afaddoul         ###   ########.fr       */
+/*   Updated: 2019/06/19 16:37:17 by afaddoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,8 @@ void			merge(t_tmp_data **arr, int l, int m, int r)
 	arrs = (t_points*)malloc(sizeof(t_points));
 	arrs->left = (t_tmp_data **)malloc(sizeof(t_tmp_data *) * optim.n1);
 	arrs->right = (t_tmp_data **)malloc(sizeof(t_tmp_data *) * optim.n2);
-	cp_data_array1(arr, arrs, &optim, &i[0]);
-	cp_data_array2(arr, arrs, &optim, &i[1]);
+	cp_data_array_right(arr, arrs, &optim, &i[0]);
+	cp_data_array_left(arr, arrs, &optim, &i[1]);
 	init_idx(optim.l, i);
 	merge_arrays(arr, arrs, &optim, i);
 	while (i[0] < (optim.m - optim.l + 1))

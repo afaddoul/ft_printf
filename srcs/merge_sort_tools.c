@@ -6,7 +6,7 @@
 /*   By: afaddoul <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/13 20:49:54 by afaddoul          #+#    #+#             */
-/*   Updated: 2019/06/14 14:51:20 by afaddoul         ###   ########.fr       */
+/*   Updated: 2019/06/19 12:57:39 by afaddoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,8 @@
 ** cp data to left array and right array
 */
 
-void			cp_data_array1(t_tmp_data **arr, t_points *arrs, t_const *optim,
-		int *i)
+void			cp_data_array_left(t_tmp_data **arr, t_points *arrs,
+		t_const *optim, int *i)
 {
 	i[0] = 0;
 	while (i[0] < optim->n1)
@@ -27,8 +27,8 @@ void			cp_data_array1(t_tmp_data **arr, t_points *arrs, t_const *optim,
 	}
 }
 
-void			cp_data_array2(t_tmp_data **arr, t_points *arrs, t_const *optim,
-		int *i)
+void			cp_data_array_right(t_tmp_data **arr, t_points *arrs,
+		t_const *optim, int *i)
 {
 	i[1] = 0;
 	while (i[1] < optim->n2)

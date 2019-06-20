@@ -1,38 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strjoin.c                                       :+:      :+:    :+:   */
+/*   conv_c.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: afaddoul <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/10/18 13:31:46 by afaddoul          #+#    #+#             */
-/*   Updated: 2019/06/19 12:59:51 by afaddoul         ###   ########.fr       */
+/*   Created: 2019/06/19 16:41:34 by afaddoul          #+#    #+#             */
+/*   Updated: 2019/06/20 19:23:16 by afaddoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/libftprintf.h"
 
-char	*ft_joinchar(char *s1, char c)
+t_shape		*conv_c(t_shape *node)
 {
-	char		**tmp;
-	char		*ptr;
-	size_t		i;
-	size_t		s1_len;
+	char	*tmp;
+	int		len;
+	int		min;
+	int		i;
 
 	i = 0;
-	if (!(s1))
-		return (0);
-	tmp = &s1;
-	s1_len = ft_strlen(s1);
-	if (!(ptr = (char*)malloc(sizeof(char) * (s1_len + 2))))
-		return (NULL);
-	while (i < s1_len)
-	{
-		ptr[i] = s1[i];
-		i++;
-	}
-	ptr[i++] = c;
-	ptr[i] = '\0';
-	free(*tmp);
-	return (ptr);
+	len = 1;
+	min = 0;
+	if ((node->field_w.f_w) >= 1)
+		len = node->field_w.f_w;
+	tmp = (char*)malloc(sizeof(char) * (len + 1));
+	tmp = ft_memset(tmp, ' ', len);
+	if (node->flg.flg[0] == 1)
+		tmp[0] = node->arg.c;
+	else
+		tmp[len - 1] = node->arg.c;
+	tmp[len] = '\0';
+	node = realloc_shape(node, tmp);
+	node->cv_len = len;
+	return (node);
 }

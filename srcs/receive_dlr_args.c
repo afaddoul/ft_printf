@@ -6,7 +6,7 @@
 /*   By: afaddoul <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/14 20:13:17 by afaddoul          #+#    #+#             */
-/*   Updated: 2019/06/15 11:29:25 by afaddoul         ###   ########.fr       */
+/*   Updated: 2019/06/20 19:34:49 by afaddoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,9 +36,9 @@ static void		arg_filler(t_shape *lst, t_tmp_data **tab, int index)
 		lst->arg.f = tab[index]->f;
 }
 
-void		receive_dlr_args(t_shape *lst, t_tmp_data **tab)
+void			receive_dlr_args(t_shape *lst, t_tmp_data **tab)
 {
-	int 	i;
+	int			i;
 
 	i = 0;
 	while (lst)

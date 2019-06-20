@@ -1,24 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   realloc_shape.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: afaddoul <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/05/24 00:23:29 by afaddoul          #+#    #+#             */
-/*   Updated: 2019/06/15 11:39:35 by afaddoul         ###   ########.fr       */
+/*   Created: 2019/06/20 16:01:30 by afaddoul          #+#    #+#             */
+/*   Updated: 2019/06/20 18:02:56 by afaddoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/libftprintf.h"
 
-int main()
+t_shape		*realloc_shape(t_shape *node, char *tmp)
 {
-	int d = 101010;
-	char  *str = "achraf";
-	char c = 'm';
-	float f = 15.89;
+	int		len;
 
-	ft_printf("%3$d---%4$s---%1$c---%2$f", c, f, d, str);
-	return (0);
+	len = ft_strlen(tmp);
+	free(node->shape);
+	node->shape = (char*)malloc(sizeof(char) * len);
+	node->shape = tmp;
+	return (node);
 }

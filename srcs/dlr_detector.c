@@ -1,38 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strjoin.c                                       :+:      :+:    :+:   */
+/*   dlr_detector.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: afaddoul <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/10/18 13:31:46 by afaddoul          #+#    #+#             */
-/*   Updated: 2019/06/19 12:59:51 by afaddoul         ###   ########.fr       */
+/*   Created: 2019/06/18 19:56:13 by afaddoul          #+#    #+#             */
+/*   Updated: 2019/06/20 19:32:28 by afaddoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/libftprintf.h"
 
-char	*ft_joinchar(char *s1, char c)
+int		dlr_detector(t_shape *lst)
 {
-	char		**tmp;
-	char		*ptr;
-	size_t		i;
-	size_t		s1_len;
-
-	i = 0;
-	if (!(s1))
-		return (0);
-	tmp = &s1;
-	s1_len = ft_strlen(s1);
-	if (!(ptr = (char*)malloc(sizeof(char) * (s1_len + 2))))
-		return (NULL);
-	while (i < s1_len)
+	while (lst)
 	{
-		ptr[i] = s1[i];
-		i++;
+		if (lst->d.dlr_flg == 1)
+			return (1);
+		lst = lst->next;
 	}
-	ptr[i++] = c;
-	ptr[i] = '\0';
-	free(*tmp);
-	return (ptr);
+	return (0);
 }

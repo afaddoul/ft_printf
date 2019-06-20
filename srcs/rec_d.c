@@ -6,7 +6,7 @@
 /*   By: afaddoul <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/25 23:07:37 by afaddoul          #+#    #+#             */
-/*   Updated: 2019/06/15 12:03:29 by afaddoul         ###   ########.fr       */
+/*   Updated: 2019/06/19 12:59:40 by afaddoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,6 @@ t_arg		*rec_d(char *str, t_arg *arg, int start, int end)
 		start++;
 	}
 	arg->dlr_v = ft_atoi(s2);
-	free(s1);
-	free(s2);
+	multi_free(2, s1, s2);
 	return (arg);
 }

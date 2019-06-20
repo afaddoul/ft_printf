@@ -6,7 +6,7 @@
 /*   By: afaddoul <afaddoul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/11 18:11:42 by afaddoul          #+#    #+#             */
-/*   Updated: 2019/06/20 19:26:42 by afaddoul         ###   ########.fr       */
+/*   Updated: 2019/06/20 21:11:19 by afaddoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -168,11 +168,11 @@ t_tmp_data					**parse_arg_dlr(t_tmp_data **tab, va_list *ap,
 void						receive_dlr_args(t_shape *lst, t_tmp_data **tab);
 int							dlr_detector(t_shape *lst);
 t_shape						*realloc_shape(t_shape *node, char *tmp);
-t_shape						*checker(t_shape *lst);
-t_shape						*dispatcher(t_shape *node, int i);
-t_shape						*checker(t_shape *lst);
+t_shape						*checker(t_shape *node, int i);
+t_shape						*dispatcher(t_shape *lst);
 int							ret_counter(t_shape *lst);
 void						print_shapes(t_shape *lst);
+void						free_lst(t_shape *lst);
 /*
 **cov_c
 */

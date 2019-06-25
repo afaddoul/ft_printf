@@ -6,19 +6,17 @@
 /*   By: afaddoul <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/19 14:43:55 by afaddoul          #+#    #+#             */
-/*   Updated: 2019/06/20 21:13:21 by afaddoul         ###   ########.fr       */
+/*   Updated: 2019/06/25 09:33:02 by afaddoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/libftprintf.h"
 
-t_shape		*(*g_p[1])(t_shape*) = {conv_c};
-
 /*
 ** add if statement each time you finish a conv
 */
 
-int			index_finder(t_shape *node)
+int						index_finder(t_shape *node)
 {
 	int		i;
 
@@ -46,18 +44,19 @@ int			index_finder(t_shape *node)
 	return (i);
 }
 
-t_shape		*checker(t_shape *node, int i)
+t_shape					*checker(t_shape *node, int i)
 {
-	t_shape	*tmp;
+	static t_shape		*(*g_p[1])(t_shape*) = {conv_c};
+	t_shape				*tmp;
 
 	tmp = (g_p[i])(node);
 	return (tmp);
 }
 
-t_shape		*dispatcher(t_shape *lst)
+t_shape					*dispatcher(t_shape *lst)
 {
-	t_shape	*head;
-	int		i;
+	t_shape				*head;
+	int					i;
 
 	i = 1;
 	head = lst;

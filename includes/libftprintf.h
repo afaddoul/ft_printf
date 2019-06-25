@@ -6,7 +6,7 @@
 /*   By: afaddoul <afaddoul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/11 18:11:42 by afaddoul          #+#    #+#             */
-/*   Updated: 2019/06/20 21:11:19 by afaddoul         ###   ########.fr       */
+/*   Updated: 2019/06/25 10:19:19 by afaddoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,7 +105,9 @@ typedef struct				s_len_mod
 	char					l_mod[2];
 	int						l_m_flg;
 }							t_len_mod;
-
+/*
+**args_structer
+*/
 typedef	struct				s_data
 {
 	int						c;
@@ -119,7 +121,9 @@ typedef	struct				s_data
 	unsigned int			big_x;
 	double					f;
 }							t_data;
-
+/*
+**shape_structer
+*/
 typedef	struct				s_shape
 {
 	char					conv;
@@ -137,7 +141,9 @@ typedef	struct				s_shape
 	struct s_shape			*next;
 	struct s_shape			*prev;
 }							t_shape;
-
+/*
+**prototypes
+*/
 int							ft_printf(const char *format, ...);
 char						*ft_joinchar(char *s1, char c);
 t_shape						*add_shape(t_shape *head, int flag, t_arg *arg);
@@ -167,12 +173,13 @@ t_tmp_data					**parse_arg_dlr(t_tmp_data **tab, va_list *ap,
 		int index);
 void						receive_dlr_args(t_shape *lst, t_tmp_data **tab);
 int							dlr_detector(t_shape *lst);
-t_shape						*realloc_shape(t_shape *node, char *tmp);
+t_shape						*realloc_shape(t_shape *node, char *tmp, int len);
 t_shape						*checker(t_shape *node, int i);
 t_shape						*dispatcher(t_shape *lst);
 int							ret_counter(t_shape *lst);
 void						print_shapes(t_shape *lst);
 void						free_lst(t_shape *lst);
+char						*ft_strdup_len(char *s1, int len);
 /*
 **cov_c
 */

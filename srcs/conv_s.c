@@ -1,33 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   conv_c.c                                           :+:      :+:    :+:   */
+/*   conv_s.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: afaddoul <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/06/19 16:41:34 by afaddoul          #+#    #+#             */
-/*   Updated: 2019/06/25 19:12:18 by afaddoul         ###   ########.fr       */
+/*   Created: 2019/06/25 13:31:56 by afaddoul          #+#    #+#             */
+/*   Updated: 2019/06/26 10:11:00 by afaddoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/libftprintf.h"
 
-t_shape		*conv_c(t_shape *node)
+t_shape		*conv_s(t_shape *node)
 {
 	char	*tmp;
 	int		len;
+	int		arg_len;
 
-	len = 1;
-	if ((node->field_w.f_w) >= 1)
-		len = node->field_w.f_w;
-	tmp = (char*)malloc(sizeof(char) * (len + 1));
+	tmp = NULL;
+	if (node->arg.s == NULL)
+	{
+		node->arg.s = ft_strdup("(null)");
+		return (node);
+	}
+	arg_len = ft_strlen(node->arg.s);
+	len = arg_len;
+	if ((node->p.pre < arg_len) &&
+			(node->p.pre_flg == 1 || node->p.pre_flg == -1))
+	{
+		arg_len = node->p.pre;
+		node = customize_arg(node);
+	}
+	len = (node->field_w.f_w > arg_len) ? node->field_w.f_w : arg_len;
+	tmp = ft_strnew(len + 1);
 	tmp = ft_memset(tmp, ' ', len);
-	if (node->flg.flg[0] == 1)
-		tmp[0] = node->arg.c;
-	else
-		tmp[len - 1] = node->arg.c;
-	tmp[len] = '\0';
+	tmp = (node->flg.flg[0] == 1) ? cpy_arg(tmp, node->arg.s, 0) :
+		cpy_arg(tmp, node->arg.s, (len - arg_len));
 	node = realloc_shape(node, tmp, len);
-	node->cv_len = len;
 	return (node);
 }

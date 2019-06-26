@@ -1,21 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   realloc_shape.c                                    :+:      :+:    :+:   */
+/*   cpy_arg.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: afaddoul <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/06/20 16:01:30 by afaddoul          #+#    #+#             */
-/*   Updated: 2019/06/25 19:45:37 by afaddoul         ###   ########.fr       */
+/*   Created: 2019/06/25 15:27:05 by afaddoul          #+#    #+#             */
+/*   Updated: 2019/06/25 17:24:48 by afaddoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/libftprintf.h"
 
-t_shape		*realloc_shape(t_shape *node, char *tmp, int len)
+char		*cpy_arg(char *dst, char *src, int i)
 {
-	free(node->shape);
-	node->shape = ft_strdup_len(tmp, len);
-	free(tmp);
-	return (node);
+	int	len;
+	int j;
+
+	j = 0;
+	if (i == 0)
+		len = ft_strlen(src);
+	else
+		len = ft_strlen(dst);
+	while (i < len)
+	{
+		dst[i++] = src[j++];
+	}
+	return (dst);
 }

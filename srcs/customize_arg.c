@@ -1,21 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   realloc_shape.c                                    :+:      :+:    :+:   */
+/*   customize_arg.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: afaddoul <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/06/20 16:01:30 by afaddoul          #+#    #+#             */
-/*   Updated: 2019/06/25 19:45:37 by afaddoul         ###   ########.fr       */
+/*   Created: 2019/06/25 14:10:20 by afaddoul          #+#    #+#             */
+/*   Updated: 2019/06/25 20:48:34 by afaddoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/libftprintf.h"
 
-t_shape		*realloc_shape(t_shape *node, char *tmp, int len)
+t_shape		*customize_arg(t_shape *node)
 {
-	free(node->shape);
-	node->shape = ft_strdup_len(tmp, len);
-	free(tmp);
+	char *tmp;
+
+	tmp = ft_strdup_len(node->arg.s, node->p.pre);
+	free(node->arg.s);
+	node->arg.s = tmp;
 	return (node);
 }

@@ -6,7 +6,7 @@
 /*   By: afaddoul <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/19 14:43:55 by afaddoul          #+#    #+#             */
-/*   Updated: 2019/06/25 09:33:02 by afaddoul         ###   ########.fr       */
+/*   Updated: 2019/06/25 14:49:23 by afaddoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ int						index_finder(t_shape *node)
 
 t_shape					*checker(t_shape *node, int i)
 {
-	static t_shape		*(*g_p[1])(t_shape*) = {conv_c};
+	static t_shape		*(*g_p[2])(t_shape*) = {conv_c, conv_s};
 	t_shape				*tmp;
 
 	tmp = (g_p[i])(node);

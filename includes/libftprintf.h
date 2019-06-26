@@ -6,7 +6,7 @@
 /*   By: afaddoul <afaddoul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/11 18:11:42 by afaddoul          #+#    #+#             */
-/*   Updated: 2019/06/25 10:19:19 by afaddoul         ###   ########.fr       */
+/*   Updated: 2019/06/26 10:17:12 by afaddoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -152,6 +152,7 @@ t_shape						*fill_node(t_shape *node, t_arg *arg,
 t_shape						*fill_list(t_shape *head, char *str);
 int							conv_finder(char c);
 t_shape						*parse_arg(t_shape *lst, va_list *ap);
+t_shape						*s_and_p_checker(t_shape *lst, va_list *ap);
 t_arg						*rec_d(char *str, t_arg *arg, int start, int end);
 t_shape						*swap_dlr(t_shape *lst);
 t_shape						*parse_data(t_shape *node, char *str);
@@ -186,5 +187,11 @@ char						*ft_strdup_len(char *s1, int len);
 t_shape						*conv_c(t_shape *node);
 void						print_conv_c(t_shape *node);
 int							conv_c_len(t_shape *node);
+/*
+**cov_c
+*/
+t_shape						*conv_s(t_shape *node);
+t_shape						*customize_arg(t_shape *node);
+char						*cpy_arg(char *dst, char *src, int i);
 
 #endif

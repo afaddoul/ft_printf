@@ -6,41 +6,52 @@
 /*   By: afaddoul <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/24 00:15:05 by afaddoul          #+#    #+#             */
-/*   Updated: 2019/06/26 10:19:46 by afaddoul         ###   ########.fr       */
+/*   Updated: 2019/06/26 21:01:48 by afaddoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/libftprintf.h"
 
-t_shape		*s_and_p_checker(t_shape *lst, va_list *ap)
+t_shape				*s_checker(t_shape *lst, va_list *ap)
 {
-	char *str;
+	char			*str;
 
-	if (lst->conv == 's')
+	str = va_arg(*ap, char *);
+	if (str)
+		lst->arg.s = ft_strdup(str);
+	else
+		lst->arg.s = ft_strdup("(null)");
+	return (lst);
+}
+
+t_shape				*p_checker(t_shape *lst, va_list *ap)
+{
+	unsigned long	decimal;
+	char			*itoa_ret;
+
+	decimal = (unsigned long)va_arg(*ap, void *);
+	if (decimal)
 	{
-		str = va_arg(*ap, char *);
-		if (str)
-			lst->arg.s = ft_strdup(str);
-		else
-			lst->arg.s = ft_strdup("(null)");
+		itoa_ret = ft_itoa_base(decimal, 16, 1);
+		lst->arg.p = ft_strdup(itoa_ret);
+		free(itoa_ret);
 	}
-	else if (lst->conv == 'p')
+	else
 	{
-		str = va_arg(*ap, void *);
-		if (str)
-			lst->arg.p = ft_strdup(str);
-		else
-			lst->arg.p = ft_strdup("(null)");
+		free(lst->arg.p);
+		lst->arg.p = ft_strdup("0");
 	}
 	return (lst);
 }
 
-t_shape		*arg_filler(t_shape *lst, va_list *ap)
+t_shape				*arg_filler(t_shape *lst, va_list *ap)
 {
 	if (lst->conv == 'c')
 		lst->arg.c = va_arg(*ap, int);
-	else if (lst->conv == 's' || lst->conv == 'p')
-		lst = s_and_p_checker(lst, ap);
+	else if (lst->conv == 's')
+		lst = s_checker(lst, ap);
+	else if (lst->conv == 'p')
+		lst = p_checker(lst, ap);
 	else if (lst->conv == 'd')
 		lst->arg.d = va_arg(*ap, int);
 	else if (lst->conv == 'i')
@@ -58,9 +69,9 @@ t_shape		*arg_filler(t_shape *lst, va_list *ap)
 	return (lst);
 }
 
-t_shape		*parse_arg(t_shape *lst, va_list *ap)
+t_shape				*parse_arg(t_shape *lst, va_list *ap)
 {
-	t_shape	*tmp;
+	t_shape			*tmp;
 
 	tmp = lst;
 	while (lst)

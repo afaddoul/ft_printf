@@ -1,32 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   check_null_p.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: afaddoul <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/05/24 00:23:29 by afaddoul          #+#    #+#             */
-/*   Updated: 2019/06/26 20:54:41 by afaddoul         ###   ########.fr       */
+/*   Created: 2019/06/26 15:51:10 by afaddoul          #+#    #+#             */
+/*   Updated: 2019/06/26 16:00:51 by afaddoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/libftprintf.h"
+#include "../includes/libftprintf.h"
 
-int main()
+int			check_null_p(t_shape *node)
 {
-	char c;
-	char c1;
-	char fw1;
-	char fw2;
+	char	*tmp;
+	char	*arg_cpy;
+	int		i;
 
-	c = 0;
-	c1 = 0;
-	fw1 = 5;
-	fw2 = 10;
-	ft_printf("%5p", NULL);
-	printf("|%5p|\n", NULL);
-	   char *str = "achraf";
-	   ft_printf("|%10p|\n",str);
-	   printf("|%10p|\n",str);
-	return (0);
+	i = 0;
+	printf("here1\n");
+	tmp = ft_strdup("0x0");
+	arg_cpy = ft_strdup(node->arg.p);
+	while (arg_cpy[i])
+	{
+		if (arg_cpy[i] != tmp[i])
+			return (0);
+		else
+			i++;
+	}
+	free(tmp);
+	return (1);
 }

@@ -6,7 +6,7 @@
 /*   By: afaddoul <afaddoul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/11 18:11:42 by afaddoul          #+#    #+#             */
-/*   Updated: 2019/06/26 10:17:12 by afaddoul         ###   ########.fr       */
+/*   Updated: 2019/06/26 20:59:43 by afaddoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -152,7 +152,6 @@ t_shape						*fill_node(t_shape *node, t_arg *arg,
 t_shape						*fill_list(t_shape *head, char *str);
 int							conv_finder(char c);
 t_shape						*parse_arg(t_shape *lst, va_list *ap);
-t_shape						*s_and_p_checker(t_shape *lst, va_list *ap);
 t_arg						*rec_d(char *str, t_arg *arg, int start, int end);
 t_shape						*swap_dlr(t_shape *lst);
 t_shape						*parse_data(t_shape *node, char *str);
@@ -181,17 +180,29 @@ int							ret_counter(t_shape *lst);
 void						print_shapes(t_shape *lst);
 void						free_lst(t_shape *lst);
 char						*ft_strdup_len(char *s1, int len);
+char						*ft_itoa_base(unsigned long nbr, int base,
+		int cse);
+int							recursion(unsigned long nbr, char *str,
+		int base, int cse);
+
+t_shape						*s_checker(t_shape *lst, va_list *ap);
+t_shape						*p_checker(t_shape *lst, va_list *ap);
 /*
-**cov_c
+**conv_c
 */
 t_shape						*conv_c(t_shape *node);
 void						print_conv_c(t_shape *node);
 int							conv_c_len(t_shape *node);
 /*
-**cov_c
+**conv_c
 */
 t_shape						*conv_s(t_shape *node);
 t_shape						*customize_arg(t_shape *node);
 char						*cpy_arg(char *dst, char *src, int i);
+/*
+**conv_p
+*/
+t_shape						*conv_p(t_shape *node);
+int							check_null_p(t_shape *node);
 
 #endif

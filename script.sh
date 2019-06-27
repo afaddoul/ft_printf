@@ -19,3 +19,4 @@ git commit -m "$now"
 git status
 git push
 git log
+echo "pushed"

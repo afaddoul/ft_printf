@@ -6,7 +6,7 @@
 /*   By: afaddoul <afaddoul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/18 21:22:24 by afaddoul          #+#    #+#             */
-/*   Updated: 2019/06/19 12:51:36 by afaddoul         ###   ########.fr       */
+/*   Updated: 2019/07/04 16:35:39 by afaddoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 int			conv_finder(char c)
 {
 	if (c != 'c' && c != 's' && c != 'p' && c != 'd' && c != 'i' && c != 'o' &&
-			c != 'u' && c != 'x' && c != 'X' && c != 'f')
+			c != 'u' && c != 'x' && c != 'X' && c != 'f' && c != '%')
 		return (1);
 	return (0);
 }
@@ -68,7 +68,7 @@ t_arg		*ft_is_conv(char *str, int *i)
 		tmp->buff = ft_joinchar(tmp->buff, str[*i]);
 		if (str[*i] == '*' && str[*i - 1] != '.')
 			tmp->f_w_star = -1;
-		else if (str[*i] == '.' && str[*i + 1] == '*')
+		else if (str[*i] == '.')
 			tmp->pre_star = -1;
 		(*i)++;
 		if (conv_finder(str[*i]) == 0)
@@ -92,7 +92,7 @@ t_shape		*fill_list(t_shape *head, char *str)
 			arg = ft_is_str(str, &i);
 			head = add_shape(head, 0, arg);
 		}
-		else if (str[i] == '%' && str[i + 1] != '%' && str[i])
+		else if (str[i] == '%')
 		{
 			arg = ft_is_conv(str, &i);
 			arg->cv = str[i];

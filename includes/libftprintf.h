@@ -6,7 +6,7 @@
 /*   By: afaddoul <afaddoul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/11 18:11:42 by afaddoul          #+#    #+#             */
-/*   Updated: 2019/06/26 20:59:43 by afaddoul         ###   ########.fr       */
+/*   Updated: 2019/07/05 20:16:19 by afaddoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,11 @@
 # include <unistd.h>
 # include <stdlib.h>
 
+/*
+**-----------------------*
+**sorting_tmp_struct
+**-----------------------*
+*/
 typedef	struct				s_tmp_data
 {
 	char					conv;
@@ -26,20 +31,22 @@ typedef	struct				s_tmp_data
 	int						c;
 	char					*s;
 	void					*p;
-	int						d;
-	int						i;
-	unsigned int			u;
-	unsigned int			o;
-	unsigned int			x;
-	unsigned int			big_x;
-	double					f;
+	long int				d;
+	long int				i;
+	unsigned long int		u;
+	unsigned long int		o;
+	unsigned long int		x;
+	unsigned long int		big_x;
+	long double				f;
 	struct s_tmp_data		*next;
 }							t_tmp_data;
+
 /*
 **-----------------------*
 **Merge sort struct
 **-----------------------*
 */
+
 typedef struct				s_const
 {
 	int						m;
@@ -54,9 +61,13 @@ typedef struct				s_points
 	t_tmp_data				**left;
 	t_tmp_data				**right;
 }							t_points;
+
 /*
 **-----------------------*
+**parsing_struct
+**-----------------------*
 */
+
 typedef struct				s_arg
 {
 	char					*buff;
@@ -66,9 +77,14 @@ typedef struct				s_arg
 	int						pre_star;
 	char					cv;
 }							t_arg;
+
 /*
+**-----------------------*
+**dollar struct
 ** 0: not found | 1: found
+**-----------------------*
 */
+
 typedef struct				s_dlr
 {
 	int						d_val;
@@ -76,8 +92,12 @@ typedef struct				s_dlr
 }							t_dlr;
 
 /*
-** flg_type_per_index ~ 0:'-'|||1:'+'|||2:'0'|||3:' '||||4:'#' ~
+**-----------------------*
+** flg_type_by_index
+**<|~|0|->'-'|1|->'+'|2|->'0'|3|->' '|4|->'#'|>~\**
+**-----------------------*
 */
+
 typedef	struct				s_flg
 {
 	char					flg[5];
@@ -89,61 +109,100 @@ typedef	struct				s_field_width
 	int						f_w;
 	int						f_w_flg;
 }							t_field_width;
+
 /*
+**-----------------------*
+**precision struct
 ** -1 for * | 0 not found | 1 field width
+**-----------------------*
 */
+
 typedef	struct				s_pre
 {
 	int						pre;
 	int						pre_flg;
 }							t_pre;
+
 /*
-** -1 for * | 0 not found | 1 .pre
+**-----------------------*
+**length_modifier_index_by_type
+**<|~|0|->'h'|1|->'hh'|2|->'l'|3|->'ll'|4|->'L'|>~\**
+**-----------------------*
 */
+
 typedef struct				s_len_mod
 {
-	char					l_mod[2];
+	int						l_mod[5];
 	int						l_m_flg;
 }							t_len_mod;
+
 /*
+**-----------------------*
 **args_structer
+**-----------------------*
 */
+
 typedef	struct				s_data
 {
 	int						c;
 	char					*s;
 	void					*p;
-	int						d;
-	int						i;
-	unsigned int			u;
-	unsigned int			o;
-	unsigned int			x;
-	unsigned int			big_x;
-	double					f;
+	long long				d;
+	long long				i;
+	unsigned long long		u;
+	unsigned long long		o;
+	unsigned long long		x;
+	unsigned long long		big_x;
+	long double				f;
 }							t_data;
+
 /*
-**shape_structer
+**-----------------------*
+**node_structer
+**-----------------------*
 */
+
 typedef	struct				s_shape
 {
 	char					conv;
 	int						conv_flag;
+	struct s_data			arg;
 	struct s_dlr			d;
 	struct s_flg			flg;
 	struct s_field_width	field_w;
 	struct s_pre			p;
 	struct s_len_mod		l_m;
-	int						index;
 	char					*shape;
-	struct s_data			arg;
 	int						lst_len;
 	int						cv_len;
+	int						index;
 	struct s_shape			*next;
 	struct s_shape			*prev;
 }							t_shape;
+
 /*
-**prototypes
+**-----------------------*
+**conv_d_structer
+**-----------------------*
 */
+
+typedef	struct				s_conv_d
+{
+	int						arg_len;
+	int						len;
+	int						sign;
+	int						zr;
+	int						sp;
+	int						cursor;
+	int						counter;
+}							t_conv_d;
+
+/*
+**-----------------------*
+**prototypes
+**-----------------------*
+*/
+
 int							ft_printf(const char *format, ...);
 char						*ft_joinchar(char *s1, char c);
 t_shape						*add_shape(t_shape *head, int flag, t_arg *arg);
@@ -180,29 +239,78 @@ int							ret_counter(t_shape *lst);
 void						print_shapes(t_shape *lst);
 void						free_lst(t_shape *lst);
 char						*ft_strdup_len(char *s1, int len);
-char						*ft_itoa_base(unsigned long nbr, int base,
+char						*ft_itoa_base(unsigned long long nbr, int base,
 		int cse);
 int							recursion(unsigned long nbr, char *str,
 		int base, int cse);
 
 t_shape						*s_checker(t_shape *lst, va_list *ap);
 t_shape						*p_checker(t_shape *lst, va_list *ap);
+
+t_shape						*special_case(t_shape *node);
 /*
+**-----------------------*
 **conv_c
+**-----------------------*
 */
+
 t_shape						*conv_c(t_shape *node);
 void						print_conv_c(t_shape *node);
 int							conv_c_len(t_shape *node);
+
 /*
-**conv_c
+**-----------------------*
+**conv_s
+**-----------------------*
 */
+
 t_shape						*conv_s(t_shape *node);
 t_shape						*customize_arg(t_shape *node);
 char						*cpy_arg(char *dst, char *src, int i);
+
 /*
+**-----------------------*
 **conv_p
+**-----------------------*
 */
+
 t_shape						*conv_p(t_shape *node);
 int							check_null_p(t_shape *node);
+
+/*
+**-----------------------*
+**conv_d
+**-----------------------*
+*/
+t_shape						*conv_d(t_shape *node);
+char						*cpy_arg_d(char *shape, t_shape *node,
+		t_conv_d *d);
+t_conv_d					*init_struct(t_conv_d *d);
+t_shape						*cast_type(t_shape *node);
+/*
+**-----------------------*
+**conv_i
+**-----------------------*
+*/
+t_shape						*conv_i(t_shape *node);
+/*
+**-----------------------*
+**conv_percent
+**-----------------------*
+*/
+t_shape						*conv_percent(t_shape *node);
+
+/*
+**-----------------------*
+**conv_u
+**-----------------------*
+*/
+
+t_shape						*cast_unsigned_type(t_shape *node);
+t_shape						*conv_u(t_shape *node);
+char						*ft_unsigned_itoa(unsigned long long n);
+int							ft_unsigned_nb_len(unsigned long long n);
+char						*cpy_arg_u(char *shape, t_shape *node,
+		t_conv_d *d);
 
 #endif

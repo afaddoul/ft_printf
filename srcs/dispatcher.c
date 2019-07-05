@@ -6,7 +6,7 @@
 /*   By: afaddoul <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/19 14:43:55 by afaddoul          #+#    #+#             */
-/*   Updated: 2019/06/26 15:25:58 by afaddoul         ###   ########.fr       */
+/*   Updated: 2019/07/05 18:51:10 by afaddoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 
 int						index_finder(t_shape *node)
 {
-	int		i;
+	int					i;
 
 	i = 0;
 	if (node->conv == 'c')
@@ -27,9 +27,9 @@ int						index_finder(t_shape *node)
 		i = 1;
 	else if (node->conv == 'p')
 		i = 2;
-	else if (node->conv == 'd')
-		i = 3;
 	else if (node->conv == 'i' || node->conv == 'd')
+		i = 3;
+	else if (node->conv == '%')
 		i = 4;
 	else if (node->conv == 'u')
 		i = 5;
@@ -46,7 +46,8 @@ int						index_finder(t_shape *node)
 
 t_shape					*checker(t_shape *node, int i)
 {
-	static t_shape		*(*g_p[3])(t_shape*) = {conv_c, conv_s, conv_p};
+	static t_shape		*(*g_p[6])(t_shape*) = {conv_c, conv_s, conv_p, conv_d,
+		conv_percent, conv_u};
 	t_shape				*tmp;
 
 	tmp = (g_p[i])(node);

@@ -6,7 +6,7 @@
 /*   By: afaddoul <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/18 01:46:26 by afaddoul          #+#    #+#             */
-/*   Updated: 2019/06/19 12:51:51 by afaddoul         ###   ########.fr       */
+/*   Updated: 2019/07/05 20:08:03 by afaddoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,9 @@ void		init_l_m_and_flg_tab(t_shape *node)
 	node->flg.flg[4] = 0;
 	node->l_m.l_mod[0] = 0;
 	node->l_m.l_mod[1] = 0;
+	node->l_m.l_mod[2] = 0;
+	node->l_m.l_mod[3] = 0;
+	node->l_m.l_mod[4] = 0;
 }
 
 void		init_flg_pre_dlr_f_w(t_shape *node)

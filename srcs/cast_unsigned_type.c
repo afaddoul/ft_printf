@@ -1,35 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   free_lst.c                                         :+:      :+:    :+:   */
+/*   conv_u.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: afaddoul <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/06/20 20:59:55 by afaddoul          #+#    #+#             */
-/*   Updated: 2019/07/04 17:01:51 by afaddoul         ###   ########.fr       */
+/*   Created: 2019/07/05 19:59:22 by afaddoul          #+#    #+#             */
+/*   Updated: 2019/07/05 20:05:30 by afaddoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/libftprintf.h"
 
-void	free_lst(t_shape *lst)
+t_shape			*cast_unsigned_type(t_shape *node)
 {
-	t_shape *tmp;
-
-	while (lst)
-	{
-		if (lst->conv_flag == 0)
-			free(lst->shape);
-		else
-		{
-			free(lst->shape);
-			if (lst->arg.s)
-				free(lst->arg.s);
-			if (lst->arg.p)
-				free(lst->arg.p);
-		}
-		tmp = lst;
-		lst = lst->next;
-		free(tmp);
-	}
+	if (node->l_m.l_m_flg == 0)
+		node->arg.u = (unsigned int)node->arg.u;
+	else if (node->l_m.l_mod[0] == 1)
+		node->arg.u = (unsigned short)node->arg.u;
+	else if (node->l_m.l_mod[1] == 1)
+		node->arg.u = (unsigned char)node->arg.u;
+	else if (node->l_m.l_mod[2] == 1)
+		node->arg.u = (unsigned long)node->arg.u;
+	return (node);
 }

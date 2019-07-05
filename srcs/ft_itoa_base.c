@@ -6,18 +6,18 @@
 /*   By: afaddoul <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/19 16:32:58 by afaddoul          #+#    #+#             */
-/*   Updated: 2019/06/26 20:48:26 by afaddoul         ###   ########.fr       */
+/*   Updated: 2019/07/05 15:34:18 by afaddoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/libftprintf.h"
 
-unsigned long nbrlen(unsigned long nb)
+unsigned long long	nbrlen(unsigned long long nb)
 {
-	int len;
+	int				len;
 
 	len = 0;
-	while(nb > 0)
+	while (nb > 0)
 	{
 		nb /= 10;
 		len++;
@@ -25,9 +25,9 @@ unsigned long nbrlen(unsigned long nb)
 	return (len);
 }
 
-char 		*copy(char *s1, char *s2)
+char				*copy(char *s1, char *s2)
 {
-	int i;
+	int				i;
 
 	i = 0;
 	while (s2[i])
@@ -38,32 +38,32 @@ char 		*copy(char *s1, char *s2)
 	return (s1);
 }
 
-int 		recursion(unsigned long nbr, char *str,int base, int cse)
+int					recursion(unsigned long nbr, char *str, int base, int cse)
 {
-	int 	i;
-	char 	*arr;
+	int				i;
+	char			*arr;
 
 	i = 0;
-	arr = ft_strnew(16);
+	arr = ft_strnew(base);
 	arr = (cse == 1) ? ft_strcpy(arr, "0123456789abcdef") :
 		ft_strcpy(arr, "0123456789ABCDEF");
-	if(nbr / base != 0)
-		i = recursion(nbr /base, str, base, cse);
+	if (nbr / base != 0)
+		i = recursion(nbr / base, str, base, cse);
 	str[i++] = arr[nbr % base];
 	str[i] = '\0';
-		free(arr);
+	free(arr);
 	return (i);
 }
 
-char 		*ft_itoa_base(unsigned long nbr, int base, int cse)
+char				*ft_itoa_base(unsigned long long nbr, int base, int cse)
 {
-	int 	i;
-	char 	*str;
+	int				i;
+	char			*str;
 
 	i = nbrlen(nbr);
 	str = (char *)malloc(sizeof(char*) * (i + 1));
 	if (nbr == 0)
 		return (copy(str, "0"));
-	i = recursion(nbr, str,base, cse);
+	i = recursion(nbr, str, base, cse);
 	return (str);
 }

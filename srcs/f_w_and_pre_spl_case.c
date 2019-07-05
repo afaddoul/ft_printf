@@ -1,35 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   free_lst.c                                         :+:      :+:    :+:   */
+/*   f_w_and_pre_spl_case.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: afaddoul <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/06/20 20:59:55 by afaddoul          #+#    #+#             */
-/*   Updated: 2019/07/04 17:01:51 by afaddoul         ###   ########.fr       */
+/*   Created: 2019/07/05 17:20:53 by afaddoul          #+#    #+#             */
+/*   Updated: 2019/07/05 17:29:13 by afaddoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/libftprintf.h"
 
-void	free_lst(t_shape *lst)
+t_shape *special_case(t_shape *node)
 {
-	t_shape *tmp;
-
-	while (lst)
+	if (node->field_w.f_w < 0)
 	{
-		if (lst->conv_flag == 0)
-			free(lst->shape);
-		else
-		{
-			free(lst->shape);
-			if (lst->arg.s)
-				free(lst->arg.s);
-			if (lst->arg.p)
-				free(lst->arg.p);
-		}
-		tmp = lst;
-		lst = lst->next;
-		free(tmp);
+		node->flg.flg[0] = 1;
+		node->field_w.f_w *= -1;
 	}
+	if (node->p.pre < 0)
+		node->p.pre = 0;
+	return (node);
 }

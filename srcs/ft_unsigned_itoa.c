@@ -1,35 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   free_lst.c                                         :+:      :+:    :+:   */
+/*   ft_unsigned_itoa.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: afaddoul <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/06/20 20:59:55 by afaddoul          #+#    #+#             */
-/*   Updated: 2019/07/04 17:01:51 by afaddoul         ###   ########.fr       */
+/*   Created: 2019/07/05 18:15:03 by afaddoul          #+#    #+#             */
+/*   Updated: 2019/07/05 18:18:01 by afaddoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+
 #include "../includes/libftprintf.h"
 
-void	free_lst(t_shape *lst)
+char	*ft_unsigned_itoa(unsigned long long n)
 {
-	t_shape *tmp;
+	char	*ptr;
+	int		i;
 
-	while (lst)
-	{
-		if (lst->conv_flag == 0)
-			free(lst->shape);
-		else
-		{
-			free(lst->shape);
-			if (lst->arg.s)
-				free(lst->arg.s);
-			if (lst->arg.p)
-				free(lst->arg.p);
-		}
-		tmp = lst;
-		lst = lst->next;
-		free(tmp);
-	}
+	i = 0;
+	if (n == 0)
+		return (ft_strdup("0"));
+	if (!(ptr = ft_strnew(ft_unsigned_nb_len(n))))
+		return (0);
+	ptr[i++] = (n % 10) + 48;
+	while ((n /= 10) != 0)
+		ptr[i++] = (n % 10) + 48;
+	ptr[i] = '\0';
+	return (ft_strrev(ptr));
 }

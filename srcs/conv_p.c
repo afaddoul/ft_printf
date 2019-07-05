@@ -6,18 +6,18 @@
 /*   By: afaddoul <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/26 10:34:46 by afaddoul          #+#    #+#             */
-/*   Updated: 2019/06/26 20:54:07 by afaddoul         ###   ########.fr       */
+/*   Updated: 2019/07/02 16:30:54 by afaddoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/libftprintf.h"
 
-t_shape *conv_p(t_shape *node)
+t_shape		*conv_p(t_shape *node)
 {
-	char *tmp;
-	char *tmp_f;
-	int len;
-	int arg_len;
+	char	*tmp;
+	char	*tmp_f;
+	int		len;
+	int		arg_len;
 
 	len = (ft_strlen(node->arg.p) + 2);
 	arg_len = len;

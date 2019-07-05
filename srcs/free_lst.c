@@ -6,7 +6,7 @@
 /*   By: afaddoul <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/20 20:59:55 by afaddoul          #+#    #+#             */
-/*   Updated: 2019/06/25 20:48:20 by afaddoul         ###   ########.fr       */
+/*   Updated: 2019/07/04 17:01:51 by afaddoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 void	free_lst(t_shape *lst)
 {
 	t_shape *tmp;
+
 	while (lst)
 	{
 		if (lst->conv_flag == 0)

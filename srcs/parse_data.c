@@ -6,7 +6,7 @@
 /*   By: afaddoul <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/02 22:02:04 by afaddoul          #+#    #+#             */
-/*   Updated: 2019/06/15 12:02:11 by afaddoul         ###   ########.fr       */
+/*   Updated: 2019/06/30 16:02:48 by afaddoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,21 +80,15 @@ t_shape		*ft_is_len_mod(t_shape *node, char *str, int *i)
 {
 	node->l_m.l_m_flg = 1;
 	if (str[*i] == 'h' && str[((*i) + 1)] == 'h')
-	{
-		node->l_m.l_mod[0] = 'h';
-		node->l_m.l_mod[1] = 'h';
-	}
+		node->l_m.l_mod[1] = 1;
 	else if (str[*i] == 'l' && str[((*i) + 1)] == 'l')
-	{
-		node->l_m.l_mod[0] = 'l';
-		node->l_m.l_mod[1] = 'l';
-	}
+		node->l_m.l_mod[3] = 1;
 	else if (str[*i] == 'h')
-		node->l_m.l_mod[0] = 'h';
+		node->l_m.l_mod[0] = 1;
 	else if (str[*i] == 'l')
-		node->l_m.l_mod[0] = 'l';
+		node->l_m.l_mod[2] = 1;
 	else if (str[*i] == 'L')
-		node->l_m.l_mod[0] = 'L';
+		node->l_m.l_mod[4] = 1;
 	return (node);
 }
 

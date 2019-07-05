@@ -6,7 +6,7 @@
 /*   By: afaddoul <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/25 13:31:56 by afaddoul          #+#    #+#             */
-/*   Updated: 2019/06/26 16:19:11 by afaddoul         ###   ########.fr       */
+/*   Updated: 2019/07/04 17:00:14 by afaddoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ t_shape		*conv_s(t_shape *node)
 		node = customize_arg(node);
 	}
 	len = (node->field_w.f_w > arg_len) ? node->field_w.f_w : arg_len;
-	tmp = ft_strnew(len + 1);
+	tmp = ft_strnew(len);
 	tmp = ft_memset(tmp, ' ', len);
 	tmp = (node->flg.flg[0] == 1) ? cpy_arg(tmp, node->arg.s, 0) :
 		cpy_arg(tmp, node->arg.s, (len - arg_len));

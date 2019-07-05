@@ -6,7 +6,7 @@
 /*   By: afaddoul <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/08 19:03:25 by afaddoul          #+#    #+#             */
-/*   Updated: 2019/06/14 20:03:57 by afaddoul         ###   ########.fr       */
+/*   Updated: 2019/06/30 16:14:30 by afaddoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,19 +21,19 @@ t_tmp_data	**parse_arg_dlr(t_tmp_data **tab, va_list *ap, int index)
 	else if (tab[index]->conv == 'p')
 		tab[index]->p = va_arg(*ap, void*);
 	else if (tab[index]->conv == 'd')
-		tab[index]->d = va_arg(*ap, int);
+		tab[index]->d = va_arg(*ap, long long);
 	else if (tab[index]->conv == 'i')
-		tab[index]->i = va_arg(*ap, int);
+		tab[index]->i = va_arg(*ap, long long);
 	else if (tab[index]->conv == 'u')
-		tab[index]->u = va_arg(*ap, unsigned int);
+		tab[index]->u = va_arg(*ap, unsigned long long);
 	else if (tab[index]->conv == 'o')
-		tab[index]->o = va_arg(*ap, unsigned int);
+		tab[index]->o = va_arg(*ap, unsigned long long);
 	else if (tab[index]->conv == 'x')
-		tab[index]->x = va_arg(*ap, unsigned int);
+		tab[index]->x = va_arg(*ap, unsigned long long);
 	else if (tab[index]->conv == 'X')
-		tab[index]->big_x = va_arg(*ap, unsigned int);
+		tab[index]->big_x = va_arg(*ap, unsigned long long);
 	else if (tab[index]->conv == 'f')
-		tab[index]->f = va_arg(*ap, double);
+		tab[index]->f = va_arg(*ap, long double);
 	return (tab);
 }
 

@@ -6,7 +6,7 @@
 /*   By: afaddoul <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/24 00:15:05 by afaddoul          #+#    #+#             */
-/*   Updated: 2019/06/26 21:01:48 by afaddoul         ###   ########.fr       */
+/*   Updated: 2019/07/04 16:56:26 by afaddoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,19 +53,21 @@ t_shape				*arg_filler(t_shape *lst, va_list *ap)
 	else if (lst->conv == 'p')
 		lst = p_checker(lst, ap);
 	else if (lst->conv == 'd')
-		lst->arg.d = va_arg(*ap, int);
+		lst->arg.d = va_arg(*ap, long long);
 	else if (lst->conv == 'i')
-		lst->arg.i = va_arg(*ap, int);
+		lst->arg.i = va_arg(*ap, long long);
 	else if (lst->conv == 'u')
-		lst->arg.u = va_arg(*ap, unsigned int);
+		lst->arg.u = va_arg(*ap, unsigned long long);
 	else if (lst->conv == 'o')
-		lst->arg.o = va_arg(*ap, unsigned int);
+		lst->arg.o = va_arg(*ap, unsigned long long);
 	else if (lst->conv == 'x')
-		lst->arg.x = va_arg(*ap, unsigned int);
+		lst->arg.x = va_arg(*ap, unsigned long long);
 	else if (lst->conv == 'X')
-		lst->arg.big_x = va_arg(*ap, unsigned int);
+		lst->arg.big_x = va_arg(*ap, unsigned long long);
 	else if (lst->conv == 'f')
-		lst->arg.f = va_arg(*ap, double);
+		lst->arg.f = va_arg(*ap, long double);
+	else if (lst->conv == '%')
+		lst->arg.s = ft_strdup("%");
 	return (lst);
 }
 

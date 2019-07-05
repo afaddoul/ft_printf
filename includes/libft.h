@@ -6,7 +6,7 @@
 /*   By: afaddoul <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/11 11:20:27 by afaddoul          #+#    #+#             */
-/*   Updated: 2018/10/24 11:18:37 by afaddoul         ###   ########.fr       */
+/*   Updated: 2019/07/03 13:49:12 by afaddoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,9 +77,9 @@ void	ft_putnbr_fd(int n, int fd);
 char	*ft_strtrim(char const *s);
 char	**ft_strsplit(char const *s, char c);
 int		ft_word_counter(const char *s, char c);
-char	*ft_itoa(int n);
+char	*ft_itoa(unsigned long long n);
 char	*ft_strrev(char *str);
-int		ft_digit_counter(int n);
+int		ft_nb_len(long long n);
 t_list	*ft_lstnew(void const *content, size_t content_size);
 void	ft_lstdelone(t_list **alst, void (*del)(void *, size_t));
 void	ft_lstdel(t_list **alst, void (*del)(void *, size_t));

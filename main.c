@@ -6,27 +6,15 @@
 /*   By: afaddoul <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/24 00:23:29 by afaddoul          #+#    #+#             */
-/*   Updated: 2019/06/26 20:54:41 by afaddoul         ###   ########.fr       */
+/*   Updated: 2019/07/05 15:46:33 by afaddoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes/libftprintf.h"
+#include <limits.h>
 
 int main()
 {
-	char c;
-	char c1;
-	char fw1;
-	char fw2;
-
-	c = 0;
-	c1 = 0;
-	fw1 = 5;
-	fw2 = 10;
-	ft_printf("%5p", NULL);
-	printf("|%5p|\n", NULL);
-	   char *str = "achraf";
-	   ft_printf("|%10p|\n",str);
-	   printf("|%10p|\n",str);
+	ft_printf("%-+23.5hhd|%- 23.5hhd|%-023.5hhd|%+ 23.5hhd|%+023.5hhd|% 023.5hhd|%-+ 023.5hhd", LLONG_MIN, LLONG_MIN, LLONG_MIN, LLONG_MIN, LLONG_MIN, LLONG_MIN, LLONG_MIN);
 	return (0);
 }

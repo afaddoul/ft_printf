@@ -6,7 +6,7 @@
 /*   By: afaddoul <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/02 22:02:04 by afaddoul          #+#    #+#             */
-/*   Updated: 2019/07/05 19:53:44 by afaddoul         ###   ########.fr       */
+/*   Updated: 2019/07/06 11:11:24 by afaddoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,10 +64,11 @@ t_shape		*ft_is_precision(t_shape *node, char *str, int *i)
 	if (str[*i] < '0' || str[*i] > '9')
 	{
 		node->p.pre = 0;
+		free(s);
 		return (node);
 	}
 	while (str[*i] >= '0' && str[*i] <= '9')
-	{
+	{	
 		s = ft_joinchar(s, str[*i]);
 		(*i)++;
 	}

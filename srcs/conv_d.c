@@ -6,7 +6,7 @@
 /*   By: afaddoul <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/29 12:45:28 by afaddoul          #+#    #+#             */
-/*   Updated: 2019/07/05 20:14:11 by afaddoul         ###   ########.fr       */
+/*   Updated: 2019/07/06 10:51:38 by afaddoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,14 +79,13 @@ static void			put_sp(t_shape *node, t_conv_d *d, char *tmp)
 	}
 }
 
-t_shape			*conv_d(t_shape *node)
+t_shape				*conv_d(t_shape *node)
 {
-	t_conv_d	*d;
-	char		*tmp;
+	t_conv_d		*d;
+	char			*tmp;
 
 	d = NULL;
 	d = init_struct(d);
-	if (node->conv == 'd')
 	node = cast_type(node);
 	d->arg_len = (node->arg.d < 0) ? (ft_nb_len(node->arg.d) - 1) :
 		ft_nb_len(node->arg.d);

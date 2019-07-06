@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   conv_d.c                                           :+:      :+:    :+:   */
+/*   conv_u.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: afaddoul <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/29 12:45:28 by afaddoul          #+#    #+#             */
-/*   Updated: 2019/07/05 20:14:10 by afaddoul         ###   ########.fr       */
+/*   Updated: 2019/07/06 09:31:49 by afaddoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,10 +64,10 @@ static void			put_sp(t_shape *node, t_conv_d *d, char *tmp)
 	}
 }
 
-t_shape			*conv_u(t_shape *node)
+t_shape				*conv_u(t_shape *node)
 {
-	t_conv_d	*d;
-	char		*tmp;
+	t_conv_d		*d;
+	char			*tmp;
 
 	d = NULL;
 	d = init_struct(d);

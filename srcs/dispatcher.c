@@ -6,11 +6,7 @@
 /*   By: afaddoul <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/19 14:43:55 by afaddoul          #+#    #+#             */
-<<<<<<< HEAD
 /*   Updated: 2019/07/05 18:51:10 by afaddoul         ###   ########.fr       */
-=======
-/*   Updated: 2019/07/04 17:10:40 by afaddoul         ###   ########.fr       */
->>>>>>> 763309f30b4ea6c28da0b9458c18589c760da9c1
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,11 +47,7 @@ int						index_finder(t_shape *node)
 t_shape					*checker(t_shape *node, int i)
 {
 	static t_shape		*(*g_p[6])(t_shape*) = {conv_c, conv_s, conv_p, conv_d,
-<<<<<<< HEAD
 		conv_percent, conv_u};
-=======
-		conv_percent};
->>>>>>> 763309f30b4ea6c28da0b9458c18589c760da9c1
 	t_shape				*tmp;
 
 	tmp = (g_p[i])(node);

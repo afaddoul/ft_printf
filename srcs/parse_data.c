@@ -6,11 +6,7 @@
 /*   By: afaddoul <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/02 22:02:04 by afaddoul          #+#    #+#             */
-<<<<<<< HEAD
 /*   Updated: 2019/07/06 11:11:24 by afaddoul         ###   ########.fr       */
-=======
-/*   Updated: 2019/06/30 16:02:48 by afaddoul         ###   ########.fr       */
->>>>>>> 763309f30b4ea6c28da0b9458c18589c760da9c1
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +81,6 @@ t_shape		*ft_is_len_mod(t_shape *node, char *str, int *i)
 {
 	node->l_m.l_m_flg = 1;
 	if (str[*i] == 'h' && str[((*i) + 1)] == 'h')
-<<<<<<< HEAD
 	{
 		node->l_m.l_mod[1] = 1;
 		*i += 1;
@@ -95,11 +90,6 @@ t_shape		*ft_is_len_mod(t_shape *node, char *str, int *i)
 		node->l_m.l_mod[3] = 1;
 		*i += 1;
 	}
-=======
-		node->l_m.l_mod[1] = 1;
-	else if (str[*i] == 'l' && str[((*i) + 1)] == 'l')
-		node->l_m.l_mod[3] = 1;
->>>>>>> 763309f30b4ea6c28da0b9458c18589c760da9c1
 	else if (str[*i] == 'h')
 		node->l_m.l_mod[0] = 1;
 	else if (str[*i] == 'l')

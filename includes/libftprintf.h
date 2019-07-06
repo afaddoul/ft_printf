@@ -6,7 +6,11 @@
 /*   By: afaddoul <afaddoul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/11 18:11:42 by afaddoul          #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2019/07/05 20:16:19 by afaddoul         ###   ########.fr       */
+=======
+/*   Updated: 2019/07/05 15:51:29 by afaddoul         ###   ########.fr       */
+>>>>>>> 763309f30b4ea6c28da0b9458c18589c760da9c1
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -247,7 +251,10 @@ int							recursion(unsigned long nbr, char *str,
 t_shape						*s_checker(t_shape *lst, va_list *ap);
 t_shape						*p_checker(t_shape *lst, va_list *ap);
 
+<<<<<<< HEAD
 t_shape						*special_case(t_shape *node);
+=======
+>>>>>>> 763309f30b4ea6c28da0b9458c18589c760da9c1
 /*
 **-----------------------*
 **conv_c
@@ -260,7 +267,11 @@ int							conv_c_len(t_shape *node);
 
 /*
 **-----------------------*
+<<<<<<< HEAD
 **conv_s
+=======
+**conv_c
+>>>>>>> 763309f30b4ea6c28da0b9458c18589c760da9c1
 **-----------------------*
 */
 
@@ -285,8 +296,20 @@ int							check_null_p(t_shape *node);
 t_shape						*conv_d(t_shape *node);
 char						*cpy_arg_d(char *shape, t_shape *node,
 		t_conv_d *d);
+<<<<<<< HEAD
 t_conv_d					*init_struct(t_conv_d *d);
 t_shape						*cast_type(t_shape *node);
+=======
+void						put_sign(t_shape *node, t_conv_d *d, char *tmp);
+void						length_specifier(t_shape *node, t_conv_d *d);
+char						*create_str_and_fill_struct(t_shape *node,
+		t_conv_d *d);
+t_conv_d					*init_struct(t_conv_d *d);
+t_shape						*cast_type(t_shape *node);
+void						put_sign_and_zero(t_shape *node, t_conv_d *d,
+		char *tmp);
+void						put_sp(t_shape *node, t_conv_d *d, char *tmp);
+>>>>>>> 763309f30b4ea6c28da0b9458c18589c760da9c1
 /*
 **-----------------------*
 **conv_i
@@ -295,11 +318,16 @@ t_shape						*cast_type(t_shape *node);
 t_shape						*conv_i(t_shape *node);
 /*
 **-----------------------*
+<<<<<<< HEAD
 **conv_percent
+=======
+**conv_i
+>>>>>>> 763309f30b4ea6c28da0b9458c18589c760da9c1
 **-----------------------*
 */
 t_shape						*conv_percent(t_shape *node);
 
+<<<<<<< HEAD
 /*
 **-----------------------*
 **conv_u
@@ -313,4 +341,6 @@ int							ft_unsigned_nb_len(unsigned long long n);
 char						*cpy_arg_u(char *shape, t_shape *node,
 		t_conv_d *d);
 
+=======
+>>>>>>> 763309f30b4ea6c28da0b9458c18589c760da9c1
 #endif

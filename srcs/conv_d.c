@@ -6,13 +6,21 @@
 /*   By: afaddoul <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/29 12:45:28 by afaddoul          #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2019/07/06 10:51:38 by afaddoul         ###   ########.fr       */
+=======
+/*   Updated: 2019/07/05 15:49:05 by afaddoul         ###   ########.fr       */
+>>>>>>> 763309f30b4ea6c28da0b9458c18589c760da9c1
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/libftprintf.h"
 
+<<<<<<< HEAD
 static void			length_specifier(t_shape *node, t_conv_d *d)
+=======
+void			length_specifier(t_shape *node, t_conv_d *d)
+>>>>>>> 763309f30b4ea6c28da0b9458c18589c760da9c1
 {
 	d->len = 0;
 	if (node->flg.flg[1] == 1 || node->flg.flg[3] == 1 || node->arg.d < 0)
@@ -30,7 +38,11 @@ static void			length_specifier(t_shape *node, t_conv_d *d)
 		d->len += d->arg_len;
 }
 
+<<<<<<< HEAD
 static char			*create_str_and_fill_struct(t_shape *node, t_conv_d *d)
+=======
+char			*create_str_and_fill_struct(t_shape *node, t_conv_d *d)
+>>>>>>> 763309f30b4ea6c28da0b9458c18589c760da9c1
 {
 	char		*tmp;
 
@@ -44,7 +56,11 @@ static char			*create_str_and_fill_struct(t_shape *node, t_conv_d *d)
 	return (tmp);
 }
 
+<<<<<<< HEAD
 static void			put_sign_and_zero(t_shape *node, t_conv_d *d, char *tmp)
+=======
+void			put_sign_and_zero(t_shape *node, t_conv_d *d, char *tmp)
+>>>>>>> 763309f30b4ea6c28da0b9458c18589c760da9c1
 {
 	if (!node->flg.flg[0] && node->flg.flg[2] && node->p.pre_flg)
 	{
@@ -67,9 +83,16 @@ static void			put_sign_and_zero(t_shape *node, t_conv_d *d, char *tmp)
 	d->counter = d->zr;
 	while ((d->counter)--)
 		tmp[(d->cursor)++] = '0';
+<<<<<<< HEAD
 }
 
 static void			put_sp(t_shape *node, t_conv_d *d, char *tmp)
+=======
+	cpy_arg_d(tmp, node, d);
+}
+
+void			put_sp(t_shape *node, t_conv_d *d, char *tmp)
+>>>>>>> 763309f30b4ea6c28da0b9458c18589c760da9c1
 {
 	if (node->flg.flg[0])
 	{
@@ -79,10 +102,17 @@ static void			put_sp(t_shape *node, t_conv_d *d, char *tmp)
 	}
 }
 
+<<<<<<< HEAD
 t_shape				*conv_d(t_shape *node)
 {
 	t_conv_d		*d;
 	char			*tmp;
+=======
+t_shape			*conv_d(t_shape *node)
+{
+	t_conv_d	*d;
+	char		*tmp;
+>>>>>>> 763309f30b4ea6c28da0b9458c18589c760da9c1
 
 	d = NULL;
 	d = init_struct(d);
@@ -100,7 +130,10 @@ t_shape				*conv_d(t_shape *node)
 			tmp[(d->cursor)++] = ' ';
 	}
 	put_sign_and_zero(node, d, tmp);
+<<<<<<< HEAD
 	cpy_arg_d(tmp, node, d);
+=======
+>>>>>>> 763309f30b4ea6c28da0b9458c18589c760da9c1
 	put_sp(node, d, tmp);
 	node = realloc_shape(node, tmp, d->cursor);
 	free(d);

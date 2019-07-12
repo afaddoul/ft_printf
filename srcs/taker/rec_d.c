@@ -1,32 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ret_counter.c                                      :+:      :+:    :+:   */
+/*   rec_d.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: afaddoul <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/06/20 18:02:17 by afaddoul          #+#    #+#             */
-/*   Updated: 2019/07/10 21:10:31 by afaddoul         ###   ########.fr       */
+/*   Created: 2019/05/25 23:07:37 by afaddoul          #+#    #+#             */
+/*   Updated: 2019/06/19 12:59:40 by afaddoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/libftprintf.h"
 
-int			ret_counter(t_shape *lst)
+t_arg		*rec_d(char *str, t_arg *arg, int start, int end)
 {
-	t_shape *head;
-	int		ret;
+	char	*s1;
+	char	*s2;
+	char	*tmp;
+	int		diff;
 
-	head = lst;
-	ret = 0;
-	while (lst)
+	diff = end - start;
+	s1 = ft_strdup(str);
+	tmp = s1;
+	s1 = ft_strsub(str, start, end);
+	free(tmp);
+	s2 = ft_strnew(0);
+	while (start < end)
 	{
-		if (lst->conv == 'c')
-			ret += lst->cv_len;
-		else
-			ret += ft_strlen(lst->shape);
-		lst = lst->next;
+		s2 = ft_joinchar(s2, str[start]);
+		start++;
 	}
-	lst = head;
-	return (ret);
+	arg->dlr_v = ft_atoi(s2);
+	multi_free(2, s1, s2);
+	return (arg);
 }

@@ -6,7 +6,7 @@
 /*   By: afaddoul <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/05 15:19:28 by afaddoul          #+#    #+#             */
-/*   Updated: 2019/07/05 17:39:30 by afaddoul         ###   ########.fr       */
+/*   Updated: 2019/07/11 15:48:17 by afaddoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,33 @@ t_conv_d		*init_struct(t_conv_d *d)
 	return (d);
 }
 
-t_shape			*cast_type(t_shape *node)
+t_conv_x		*init_struct_x(t_conv_x *x)
+{
+	x = (t_conv_x*)malloc(sizeof(t_conv_x));
+	x->hex = NULL;
+	x->zr = 0;
+	x->sign = 0;
+	x->sp = 0;
+	x->len = 0;
+	x->cursor = 0;
+	x->counter = 0;
+	return (x);
+}
+
+t_conv_o		*init_struct_o(t_conv_o *o)
+{
+	o = (t_conv_o*)malloc(sizeof(t_conv_o));
+	o->oct = NULL;
+	o->zr = 0;
+	o->sign = 0;
+	o->sp = 0;
+	o->len = 0;
+	o->cursor = 0;
+	o->counter = 0;
+	return (o);
+}
+
+void			cast_type(t_shape *node)
 {
 	if (node->l_m.l_m_flg == 0)
 		node->arg.d = (int)node->arg.d;
@@ -34,5 +60,4 @@ t_shape			*cast_type(t_shape *node)
 		node->arg.d = (signed char)node->arg.d;
 	else if (node->l_m.l_mod[2] == 1)
 		node->arg.d = (long)node->arg.d;
-	return (node);
 }

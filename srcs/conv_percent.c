@@ -6,16 +6,15 @@
 /*   By: afaddoul <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/04 16:15:33 by afaddoul          #+#    #+#             */
-/*   Updated: 2019/07/04 17:03:23 by afaddoul         ###   ########.fr       */
+/*   Updated: 2019/07/11 15:59:31 by afaddoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/libftprintf.h"
 
-t_shape	*conv_percent(t_shape *node)
+void		conv_percent(t_shape *node)
 {
-	t_shape *tmp;
-
-	tmp = conv_s(node);
-	return (tmp);
+	if (node->p.pre == 0)
+		node->p.pre = 1;
+	conv_s(node);
 }

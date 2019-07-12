@@ -6,7 +6,7 @@
 /*   By: afaddoul <afaddoul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/11 18:11:42 by afaddoul          #+#    #+#             */
-/*   Updated: 2019/07/05 20:16:19 by afaddoul         ###   ########.fr       */
+/*   Updated: 2019/07/11 21:48:25 by afaddoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,8 @@ typedef	struct				s_tmp_data
 	int						c;
 	char					*s;
 	void					*p;
-	long int				d;
-	long int				i;
+	long long				d;
+	long long				i;
 	unsigned long int		u;
 	unsigned long int		o;
 	unsigned long int		x;
@@ -149,10 +149,10 @@ typedef	struct				s_data
 	void					*p;
 	long long				d;
 	long long				i;
-	unsigned long long		u;
-	unsigned long long		o;
-	unsigned long long		x;
-	unsigned long long		big_x;
+	unsigned long int		u;
+	unsigned long int		o;
+	unsigned long int		x;
+	unsigned long int		big_x;
 	long double				f;
 }							t_data;
 
@@ -182,7 +182,7 @@ typedef	struct				s_shape
 
 /*
 **-----------------------*
-**conv_d_structer
+**conv_d_and_u_structer
 **-----------------------*
 */
 
@@ -199,6 +199,41 @@ typedef	struct				s_conv_d
 
 /*
 **-----------------------*
+**conv_x_and_X_structer
+**-----------------------*
+*/
+
+typedef struct				s_con_x
+{
+	char					*hex;
+	int						len;
+	int						arg_len;
+	int						sign;
+	int						zr;
+	int						sp;
+	int						cursor;
+	int						counter;
+}							t_conv_x;
+
+/*
+**-----------------------*
+**conv_o_structer
+**-----------------------*
+*/
+
+typedef struct				s_con_o
+{
+	char					*oct;
+	int						len;
+	int						arg_len;
+	int						sign;
+	int						zr;
+	int						sp;
+	int						cursor;
+	int						counter;
+}							t_conv_o;
+/*
+**-----------------------*
 **prototypes
 **-----------------------*
 */
@@ -210,7 +245,7 @@ t_shape						*fill_node(t_shape *node, t_arg *arg,
 		int index, int flag);
 t_shape						*fill_list(t_shape *head, char *str);
 int							conv_finder(char c);
-t_shape						*parse_arg(t_shape *lst, va_list *ap);
+void						parse_arg(t_shape *lst, va_list *ap);
 t_arg						*rec_d(char *str, t_arg *arg, int start, int end);
 t_shape						*swap_dlr(t_shape *lst);
 t_shape						*parse_data(t_shape *node, char *str);
@@ -232,8 +267,8 @@ t_tmp_data					**parse_arg_dlr(t_tmp_data **tab, va_list *ap,
 		int index);
 void						receive_dlr_args(t_shape *lst, t_tmp_data **tab);
 int							dlr_detector(t_shape *lst);
-t_shape						*realloc_shape(t_shape *node, char *tmp, int len);
-t_shape						*checker(t_shape *node, int i);
+void						realloc_shape(t_shape *node, char *tmp, int len);
+void						checker(t_shape *node, int i);
 t_shape						*dispatcher(t_shape *lst);
 int							ret_counter(t_shape *lst);
 void						print_shapes(t_shape *lst);
@@ -241,7 +276,7 @@ void						free_lst(t_shape *lst);
 char						*ft_strdup_len(char *s1, int len);
 char						*ft_itoa_base(unsigned long long nbr, int base,
 		int cse);
-int							recursion(unsigned long nbr, char *str,
+int							recursion(unsigned long long nbr, char *str,
 		int base, int cse);
 
 t_shape						*s_checker(t_shape *lst, va_list *ap);
@@ -254,7 +289,7 @@ t_shape						*special_case(t_shape *node);
 **-----------------------*
 */
 
-t_shape						*conv_c(t_shape *node);
+void						conv_c(t_shape *node);
 void						print_conv_c(t_shape *node);
 int							conv_c_len(t_shape *node);
 
@@ -264,8 +299,8 @@ int							conv_c_len(t_shape *node);
 **-----------------------*
 */
 
-t_shape						*conv_s(t_shape *node);
-t_shape						*customize_arg(t_shape *node);
+void						conv_s(t_shape *node);
+void						customize_arg(t_shape *node);
 char						*cpy_arg(char *dst, char *src, int i);
 
 /*
@@ -274,7 +309,7 @@ char						*cpy_arg(char *dst, char *src, int i);
 **-----------------------*
 */
 
-t_shape						*conv_p(t_shape *node);
+void						conv_p(t_shape *node);
 int							check_null_p(t_shape *node);
 
 /*
@@ -282,23 +317,28 @@ int							check_null_p(t_shape *node);
 **conv_d
 **-----------------------*
 */
-t_shape						*conv_d(t_shape *node);
+
+void						conv_d(t_shape *node);
 char						*cpy_arg_d(char *shape, t_shape *node,
 		t_conv_d *d);
 t_conv_d					*init_struct(t_conv_d *d);
-t_shape						*cast_type(t_shape *node);
+void						cast_type(t_shape *node);
+
 /*
 **-----------------------*
 **conv_i
 **-----------------------*
 */
-t_shape						*conv_i(t_shape *node);
+
+void						conv_i(t_shape *node);
+
 /*
 **-----------------------*
 **conv_percent
 **-----------------------*
 */
-t_shape						*conv_percent(t_shape *node);
+
+void						conv_percent(t_shape *node);
 
 /*
 **-----------------------*
@@ -306,11 +346,47 @@ t_shape						*conv_percent(t_shape *node);
 **-----------------------*
 */
 
-t_shape						*cast_unsigned_type(t_shape *node);
-t_shape						*conv_u(t_shape *node);
+void						cast_unsigned_type(t_shape *node);
+void						conv_u(t_shape *node);
 char						*ft_unsigned_itoa(unsigned long long n);
 int							ft_unsigned_nb_len(unsigned long long n);
 char						*cpy_arg_u(char *shape, t_shape *node,
 		t_conv_d *d);
+
+/*
+**-----------------------*
+**conv_x
+**-----------------------*
+*/
+
+void						conv_x(t_shape *node);
+t_conv_x					*init_struct_x(t_conv_x *x);
+char						*cpy_arg_x(char *shape, t_shape *node,
+		t_conv_x *x);
+void						cast_unsigned_type_x(t_shape *node);
+
+/*
+**-----------------------*
+**conv_big_x
+**-----------------------*
+*/
+
+void						conv_big_x(t_shape *node);
+char						*cpy_arg_big_x(char *shape, t_shape *node,
+		t_conv_x *x);
+void						cast_unsigned_type_big_x(t_shape *node);
+
+/*
+**-----------------------*
+**conv_o
+**-----------------------*
+*/
+
+void						conv_o(t_shape *node);
+t_conv_o					*init_struct_o(t_conv_o *o);
+void						cast_unsigned_type_o(t_shape *node);
+char						*cpy_arg_o(char *shape, t_shape *node,
+		t_conv_o *o);
+void						init_args(t_shape *node);
 
 #endif

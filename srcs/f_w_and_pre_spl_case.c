@@ -6,13 +6,13 @@
 /*   By: afaddoul <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/05 17:20:53 by afaddoul          #+#    #+#             */
-/*   Updated: 2019/07/05 17:29:13 by afaddoul         ###   ########.fr       */
+/*   Updated: 2019/07/11 10:50:17 by afaddoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/libftprintf.h"
 
-t_shape *special_case(t_shape *node)
+t_shape		*special_case(t_shape *node)
 {
 	if (node->field_w.f_w < 0)
 	{

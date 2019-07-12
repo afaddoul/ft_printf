@@ -6,7 +6,7 @@
 /*   By: afaddoul <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/29 12:45:28 by afaddoul          #+#    #+#             */
-/*   Updated: 2019/07/06 09:31:49 by afaddoul         ###   ########.fr       */
+/*   Updated: 2019/07/11 16:00:40 by afaddoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,14 +64,14 @@ static void			put_sp(t_shape *node, t_conv_d *d, char *tmp)
 	}
 }
 
-t_shape				*conv_u(t_shape *node)
+void				conv_u(t_shape *node)
 {
 	t_conv_d		*d;
 	char			*tmp;
 
 	d = NULL;
 	d = init_struct(d);
-	node = cast_unsigned_type(node);
+	cast_unsigned_type(node);
 	d->arg_len = ft_unsigned_nb_len(node->arg.u);
 	if (node->p.pre_flg && !node->p.pre && node->arg.u == 0)
 		d->arg_len = 0;
@@ -86,7 +86,6 @@ t_shape				*conv_u(t_shape *node)
 	put_sign_and_zero(node, d, tmp);
 	cpy_arg_u(tmp, node, d);
 	put_sp(node, d, tmp);
-	node = realloc_shape(node, tmp, d->cursor);
+	realloc_shape(node, tmp, d->cursor);
 	free(d);
-	return (node);
 }

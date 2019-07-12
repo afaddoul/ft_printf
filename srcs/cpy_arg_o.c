@@ -1,32 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ret_counter.c                                      :+:      :+:    :+:   */
+/*   cpy_arg_o.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: afaddoul <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/06/20 18:02:17 by afaddoul          #+#    #+#             */
-/*   Updated: 2019/07/10 21:10:31 by afaddoul         ###   ########.fr       */
+/*   Created: 2019/07/08 14:19:57 by afaddoul          #+#    #+#             */
+/*   Updated: 2019/07/08 19:28:24 by afaddoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/libftprintf.h"
 
-int			ret_counter(t_shape *lst)
+char		*cpy_arg_o(char *shape, t_shape *node, t_conv_o *o)
 {
-	t_shape *head;
-	int		ret;
+	int		j;
+	int		len;
 
-	head = lst;
-	ret = 0;
-	while (lst)
-	{
-		if (lst->conv == 'c')
-			ret += lst->cv_len;
-		else
-			ret += ft_strlen(lst->shape);
-		lst = lst->next;
-	}
-	lst = head;
-	return (ret);
+	j = 0;
+	if (!node->arg.o && !node->p.pre && node->p.pre_flg && !node->flg.flg[4])
+		return (shape);
+	len = ft_strlen(o->oct);
+	while (j < len)
+		shape[(o->cursor)++] = o->oct[j++];
+	free(o->oct);
+	return (shape);
 }

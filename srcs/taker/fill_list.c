@@ -6,7 +6,7 @@
 /*   By: afaddoul <afaddoul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/18 21:22:24 by afaddoul          #+#    #+#             */
-/*   Updated: 2019/07/11 14:10:00 by afaddoul         ###   ########.fr       */
+/*   Updated: 2019/07/04 16:35:39 by afaddoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,14 +36,12 @@ t_arg		*ft_is_str(char *str, int *i)
 	tmp = (t_arg*)malloc(sizeof(t_arg));
 	stct_init(tmp);
 	tmp->buff = ft_strnew(0);
-	while (str[*i] && (str[*i] != '%' || (str[*i] == '%' && str[*i + 1]
-					&& str[*i + 1] == '%')))
+	while (((str[*i] != '%') || (str[*i] == '%' && str[*i + 1] == '%')) &&
+			str[*i])
 	{
 		if (str[*i] == '%' && str[*i + 1] == '%')
 			(*i)++;
 		tmp->buff = ft_joinchar(tmp->buff, str[*i]);
-		if (str[*i] == '\0')
-			break ;
 		if (str[*i + 1] == '%')
 			break ;
 		(*i)++;
@@ -64,18 +62,19 @@ t_arg		*ft_is_conv(char *str, int *i)
 	{
 		if (str[*i] == '$')
 		{
-			tmp = rec_d(str, tmp, start, *i);
+			tmp = rec_d(str, tmp, (start + 1), *i);
 			tmp->dlr = 1;
 		}
 		tmp->buff = ft_joinchar(tmp->buff, str[*i]);
 		if (str[*i] == '*' && str[*i - 1] != '.')
 			tmp->f_w_star = -1;
-		else if (str[*i] == '.' && str[*i + 1] && str[*i + 1] == '*')
+		else if (str[*i] == '.')
 			tmp->pre_star = -1;
+		(*i)++;
 		if (conv_finder(str[*i]) == 0)
 			break ;
-		(*i)++;
 	}
+	tmp->buff = ft_joinchar(tmp->buff, str[*i]);
 	return (tmp);
 }
 
@@ -87,21 +86,21 @@ t_shape		*fill_list(t_shape *head, char *str)
 	i = 0;
 	while (str[i])
 	{
-		if ((str[i] != '%') || (str[i] == '%' && (str[i + 1] &&
-						str[i + 1] == '%')))
+		if (((str[i] != '%') || (str[i] == '%' && str[i + 1] == '%')) &&
+				str[i])
 		{
 			arg = ft_is_str(str, &i);
 			head = add_shape(head, 0, arg);
 		}
-		else if (str[i] == '%' && str[i + 1])
+		else if (str[i] == '%')
 		{
-			i++;
 			arg = ft_is_conv(str, &i);
 			arg->cv = str[i];
 			head = add_shape(head, 1, arg);
 		}
-		if (str[i] != '\0')
-			i++;
+		if (!(str[i]))
+			return (head);
+		i++;
 	}
 	return (head);
 }

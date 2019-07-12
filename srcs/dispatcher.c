@@ -3,18 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   dispatcher.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: afaddoul <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: afaddoul <afaddoul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/19 14:43:55 by afaddoul          #+#    #+#             */
-/*   Updated: 2019/07/05 18:51:10 by afaddoul         ###   ########.fr       */
+/*   Updated: 2019/07/11 20:10:20 by afaddoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/libftprintf.h"
-
-/*
-** add if statement each time you finish a conv
-*/
 
 int						index_finder(t_shape *node)
 {
@@ -33,25 +29,23 @@ int						index_finder(t_shape *node)
 		i = 4;
 	else if (node->conv == 'u')
 		i = 5;
-	else if (node->conv == 'o')
-		i = 6;
 	else if (node->conv == 'x')
-		i = 7;
+		i = 6;
 	else if (node->conv == 'X')
+		i = 7;
+	else if (node->conv == 'o')
 		i = 8;
 	else if (node->conv == 'f')
 		i = 9;
 	return (i);
 }
 
-t_shape					*checker(t_shape *node, int i)
+void					checker(t_shape *node, int i)
 {
-	static t_shape		*(*g_p[6])(t_shape*) = {conv_c, conv_s, conv_p, conv_d,
-		conv_percent, conv_u};
-	t_shape				*tmp;
+	static void			(*fct_p_arr[9])(t_shape*) = {conv_c, conv_s, conv_p,
+		conv_d, conv_percent, conv_u, conv_x, conv_big_x, conv_o};
 
-	tmp = (g_p[i])(node);
-	return (tmp);
+	(fct_p_arr[i])(node);
 }
 
 t_shape					*dispatcher(t_shape *lst)
@@ -66,7 +60,7 @@ t_shape					*dispatcher(t_shape *lst)
 		if (lst->conv_flag == 1)
 		{
 			i = index_finder(lst);
-			lst = checker(lst, i);
+			checker(lst, i);
 		}
 		lst = lst->next;
 	}

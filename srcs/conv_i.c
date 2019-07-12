@@ -6,13 +6,13 @@
 /*   By: afaddoul <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/30 16:17:24 by afaddoul          #+#    #+#             */
-/*   Updated: 2019/06/30 16:18:39 by afaddoul         ###   ########.fr       */
+/*   Updated: 2019/07/11 15:48:50 by afaddoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/libftprintf.h"
 
-t_shape	*conv_i(t_shape *node)
+void		conv_i(t_shape *node)
 {
-	return (conv_d(node));
+	conv_d(node);
 }

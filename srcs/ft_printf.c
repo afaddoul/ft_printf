@@ -6,7 +6,7 @@
 /*   By: afaddoul <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/24 00:15:17 by afaddoul          #+#    #+#             */
-/*   Updated: 2019/07/05 20:08:10 by afaddoul         ###   ########.fr       */
+/*   Updated: 2019/07/11 21:48:28 by afaddoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,8 @@ int				ft_printf(const char *format, ...)
 		receive_dlr_args(lst, tab);
 	}
 	else
-		lst = parse_arg(lst, &ap);
-	lst = dispatcher(lst);
+		parse_arg(lst, &ap);
+	dispatcher(lst);
 	ret = ret_counter(lst);
 	print_shapes(lst);
 	free_lst(lst);

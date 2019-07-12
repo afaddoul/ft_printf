@@ -1,32 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ret_counter.c                                      :+:      :+:    :+:   */
+/*   add_node_args.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: afaddoul <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/06/20 18:02:17 by afaddoul          #+#    #+#             */
-/*   Updated: 2019/07/10 21:10:31 by afaddoul         ###   ########.fr       */
+/*   Created: 2019/06/08 17:56:57 by afaddoul          #+#    #+#             */
+/*   Updated: 2019/06/15 11:28:56 by afaddoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/libftprintf.h"
 
-int			ret_counter(t_shape *lst)
+t_tmp_data				*add_node(t_tmp_data *head, char cv, int dlr)
 {
-	t_shape *head;
-	int		ret;
+	t_tmp_data			*node;
 
-	head = lst;
-	ret = 0;
-	while (lst)
+	node = (t_tmp_data*)malloc(sizeof(t_tmp_data));
+	node->conv = cv;
+	node->dlr = dlr;
+	if (head == NULL)
 	{
-		if (lst->conv == 'c')
-			ret += lst->cv_len;
-		else
-			ret += ft_strlen(lst->shape);
-		lst = lst->next;
+		node->next = NULL;
+		return (node);
 	}
-	lst = head;
-	return (ret);
+	else
+	{
+		head->next = node;
+		node->next = NULL;
+	}
+	return (node);
 }

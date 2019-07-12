@@ -1,32 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ret_counter.c                                      :+:      :+:    :+:   */
+/*   fill_args_node.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: afaddoul <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/06/20 18:02:17 by afaddoul          #+#    #+#             */
-/*   Updated: 2019/07/10 21:10:31 by afaddoul         ###   ########.fr       */
+/*   Created: 2019/06/12 15:19:10 by afaddoul          #+#    #+#             */
+/*   Updated: 2019/06/15 11:13:29 by afaddoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/libftprintf.h"
 
-int			ret_counter(t_shape *lst)
+t_tmp_data		**cp_data(t_shape *lst, int len)
 {
-	t_shape *head;
-	int		ret;
+	t_tmp_data	*args;
+	t_tmp_data	**arr;
+	int			i;
 
-	head = lst;
-	ret = 0;
+	i = 0;
+	args = NULL;
+	arr = (t_tmp_data**)malloc(sizeof(t_tmp_data*) * len + 1);
 	while (lst)
 	{
-		if (lst->conv == 'c')
-			ret += lst->cv_len;
-		else
-			ret += ft_strlen(lst->shape);
+		if (lst->conv_flag == 1)
+		{
+			args = add_node(args, lst->conv, lst->d.d_val);
+			arr[i++] = args;
+		}
 		lst = lst->next;
 	}
-	lst = head;
-	return (ret);
+	arr[i] = 0;
+	merge_sort(arr, 0, (len - 1));
+	return (arr);
 }

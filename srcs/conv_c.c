@@ -6,13 +6,13 @@
 /*   By: afaddoul <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/19 16:41:34 by afaddoul          #+#    #+#             */
-/*   Updated: 2019/06/25 19:12:18 by afaddoul         ###   ########.fr       */
+/*   Updated: 2019/07/11 15:56:31 by afaddoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/libftprintf.h"
 
-t_shape		*conv_c(t_shape *node)
+void		conv_c(t_shape *node)
 {
 	char	*tmp;
 	int		len;
@@ -27,7 +27,6 @@ t_shape		*conv_c(t_shape *node)
 	else
 		tmp[len - 1] = node->arg.c;
 	tmp[len] = '\0';
-	node = realloc_shape(node, tmp, len);
+	realloc_shape(node, tmp, len);
 	node->cv_len = len;
-	return (node);
 }

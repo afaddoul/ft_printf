@@ -6,7 +6,7 @@
 /*   By: afaddoul <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/24 00:15:05 by afaddoul          #+#    #+#             */
-/*   Updated: 2019/07/05 17:33:58 by afaddoul         ###   ########.fr       */
+/*   Updated: 2019/07/11 16:27:22 by afaddoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ t_shape				*p_checker(t_shape *lst, va_list *ap)
 	return (lst);
 }
 
-t_shape				*arg_filler(t_shape *lst, va_list *ap)
+void				arg_filler(t_shape *lst, va_list *ap)
 {
 	if (lst->conv == 'c')
 		lst->arg.c = va_arg(*ap, int);
@@ -68,28 +68,29 @@ t_shape				*arg_filler(t_shape *lst, va_list *ap)
 		lst->arg.f = va_arg(*ap, long double);
 	else if (lst->conv == '%')
 		lst->arg.s = ft_strdup("%");
-	return (lst);
 }
 
-t_shape				*parse_arg(t_shape *lst, va_list *ap)
+void				parse_arg(t_shape *lst, va_list *ap)
 {
 	t_shape			*tmp;
 
 	tmp = lst;
 	while (lst)
 	{
-		if (lst->field_w.f_w_flg == -1)
+		if (lst->conv_flag == 1)
 		{
-			lst->field_w.f_w = va_arg(*ap, int);
-			lst = special_case(lst);
+			if (lst->field_w.f_w_flg == -1)
+			{
+				lst->field_w.f_w = va_arg(*ap, int);
+				lst = special_case(lst);
+			}
+			if (lst->p.pre_flg == -1)
+			{
+				lst->p.pre = va_arg(*ap, int);
+				lst = special_case(lst);
+			}
+			arg_filler(lst, ap);
 		}
-		if (lst->p.pre_flg == -1)
-		{
-			lst->p.pre = va_arg(*ap, int);
-			lst = special_case(lst);
-		}
-		lst = arg_filler(lst, ap);
 		lst = lst->next;
 	}
-	return (tmp);
 }

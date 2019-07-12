@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fill_node.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: afaddoul <afaddoul@student.42.fr>          +#+  +:+       +#+        */
+/*   By: afaddoul <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/18 01:46:26 by afaddoul          #+#    #+#             */
-/*   Updated: 2019/07/11 12:06:51 by afaddoul         ###   ########.fr       */
+/*   Updated: 2019/07/10 15:14:06 by afaddoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,7 @@ t_shape		*fill_node(t_shape *node, t_arg *arg, int index, int flag)
 	init_args(node);
 	if (flag == 1)
 	{
+		printf("parsing_point---> |%p|\n", node);
 		node->d.dlr_flg = arg->dlr;
 		node->d.d_val = arg->dlr_v;
 		node->field_w.f_w_flg = arg->f_w_star;

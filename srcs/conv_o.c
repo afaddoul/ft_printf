@@ -6,7 +6,7 @@
 /*   By: afaddoul <afaddoul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/08 14:04:19 by afaddoul          #+#    #+#             */
-/*   Updated: 2019/07/12 18:32:52 by afaddoul         ###   ########.fr       */
+/*   Updated: 2019/07/12 20:56:26 by afaddoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,20 +32,22 @@ static void		length_specifier(t_shape *node, t_conv_o *o)
 static char		*create_str_and_fill_struct(t_shape *node, t_conv_o *o)
 {
 	char		*tmp;
-	int 		hash;
+	int			hash;
 
 	hash = node->flg.flg[4] ? 1 : 0;
 	tmp = ft_strnew(o->len);
 	tmp = ft_memset(tmp, ' ', o->len);
 	if (hash)
-	hash = (!node->arg.o) ? 0 : 1;
+		hash = (!node->arg.o) ? 0 : 1;
 	o->zr = (node->p.pre - o->arg_len > 0) ? node->p.pre - o->arg_len : 0;
 	o->sp = (node->field_w.f_w - o->arg_len - o->zr - hash > 0) ?
 		(node->field_w.f_w - o->arg_len - o->zr - hash) : 0;
 	o->sp = (o->sp > 0) ? o->sp : 0;
 	if (((node->p.pre - o->arg_len) == o->zr) && node->flg.flg[4])
 		o->len--;
-	printf("sp:%d---zr:%d\n", o->sp, o->zr);
+	if (node->p.pre > o->arg_len && node->field_w.f_w > node->p.pre
+			&& node->flg.flg[4] && node->arg.o)
+		o->sp++;
 	return (tmp);
 }
 
@@ -100,9 +102,7 @@ void			conv_o(t_shape *node)
 	{
 		o->counter = o->sp;
 		while (tmp[o->cursor] && o->counter--)
-		{
 			tmp[(o->cursor)++] = ' ';
-		}
 	}
 	put_prefix_and_zero(node, o, tmp);
 	cpy_arg_o(tmp, node, o);

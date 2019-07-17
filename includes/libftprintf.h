@@ -6,7 +6,7 @@
 /*   By: afaddoul <afaddoul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/11 18:11:42 by afaddoul          #+#    #+#             */
-/*   Updated: 2019/07/11 21:48:25 by afaddoul         ###   ########.fr       */
+/*   Updated: 2019/07/17 16:59:59 by afaddoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -232,6 +232,22 @@ typedef struct				s_con_o
 	int						cursor;
 	int						counter;
 }							t_conv_o;
+
+/*
+**-----------------------*
+**conv_o_structer
+**-----------------------*
+*/
+
+typedef struct 				s_add
+{
+	int 					i;
+	int 					len_1;
+	int 					len_2;
+	int 					quotient;
+	int 					sum;
+}							t_add;
+
 /*
 **-----------------------*
 **prototypes
@@ -388,5 +404,13 @@ void						cast_unsigned_type_o(t_shape *node);
 char						*cpy_arg_o(char *shape, t_shape *node,
 		t_conv_o *o);
 void						init_args(t_shape *node);
+
+/*
+**-----------------------*
+**conv_f
+**-----------------------*
+*/
+
+char						*add_op(char *s1, char *s2);
 
 #endif

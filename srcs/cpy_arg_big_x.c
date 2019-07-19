@@ -6,7 +6,7 @@
 /*   By: afaddoul <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/08 13:51:22 by afaddoul          #+#    #+#             */
-/*   Updated: 2019/07/08 13:57:27 by afaddoul         ###   ########.fr       */
+/*   Updated: 2019/07/18 19:16:48 by afaddoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,5 @@ char		*cpy_arg_big_x(char *shape, t_shape *node, t_conv_x *x)
 	len = ft_strlen(x->hex);
 	while (j < len)
 		shape[(x->cursor)++] = x->hex[j++];
-	free(x->hex);
 	return (shape);
 }

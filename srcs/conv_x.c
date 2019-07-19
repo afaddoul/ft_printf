@@ -6,7 +6,7 @@
 /*   By: afaddoul <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/07 13:28:42 by afaddoul          #+#    #+#             */
-/*   Updated: 2019/07/11 20:40:32 by afaddoul         ###   ########.fr       */
+/*   Updated: 2019/07/18 19:15:38 by afaddoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,5 +103,5 @@ void			conv_x(t_shape *node)
 	cpy_arg_x(tmp, node, x);
 	put_sp(node, x, tmp);
 	realloc_shape(node, tmp, x->cursor);
-	free(x);
+	multi_free(2, x->hex, x);
 }

@@ -6,7 +6,7 @@
 /*   By: afaddoul <afaddoul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/08 14:04:19 by afaddoul          #+#    #+#             */
-/*   Updated: 2019/07/12 20:56:26 by afaddoul         ###   ########.fr       */
+/*   Updated: 2019/07/18 19:17:58 by afaddoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,5 +108,5 @@ void			conv_o(t_shape *node)
 	cpy_arg_o(tmp, node, o);
 	put_sp(node, o, tmp);
 	realloc_shape(node, tmp, o->cursor);
-	free(o);
+	multi_free(2, o->oct, o);
 }

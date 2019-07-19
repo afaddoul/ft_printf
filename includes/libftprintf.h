@@ -6,7 +6,7 @@
 /*   By: afaddoul <afaddoul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/11 18:11:42 by afaddoul          #+#    #+#             */
-/*   Updated: 2019/07/17 16:59:59 by afaddoul         ###   ########.fr       */
+/*   Updated: 2019/07/19 15:00:24 by afaddoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -248,6 +248,16 @@ typedef struct 				s_add
 	int 					sum;
 }							t_add;
 
+typedef struct				s_multi
+{
+	int 					i;
+	int 					j;
+	int 					len_1;
+	int 					len_2;
+	int 					quotient;
+	int 					tmp;
+}							t_multi;
+
 /*
 **-----------------------*
 **prototypes
@@ -412,5 +422,6 @@ void						init_args(t_shape *node);
 */
 
 char						*add_op(char *s1, char *s2);
+char						*multi_op(char *s1, char *s2);
 
 #endif

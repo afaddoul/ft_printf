@@ -6,7 +6,7 @@
 /*   By: afaddoul <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/17 11:30:35 by afaddoul          #+#    #+#             */
-/*   Updated: 2019/07/19 14:36:07 by afaddoul         ###   ########.fr       */
+/*   Updated: 2019/07/19 16:13:27 by afaddoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void			swap_str(char **s1, char **s2)
 	*s2 = tmp;
 }
 
-t_add			*init_var(t_add *ad, char **str, char **s1, char **s2)
+static t_add	*init_var(t_add *ad, char **str, char **s1, char **s2)
 {
 	ad = (t_add*)malloc(sizeof(t_add));
 	ad->i = 0;

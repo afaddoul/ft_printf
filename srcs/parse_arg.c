@@ -6,7 +6,7 @@
 /*   By: afaddoul <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/24 00:15:05 by afaddoul          #+#    #+#             */
-/*   Updated: 2019/07/11 16:27:22 by afaddoul         ###   ########.fr       */
+/*   Updated: 2019/07/20 14:56:43 by afaddoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,8 +64,10 @@ void				arg_filler(t_shape *lst, va_list *ap)
 		lst->arg.x = va_arg(*ap, unsigned long long);
 	else if (lst->conv == 'X')
 		lst->arg.big_x = va_arg(*ap, unsigned long long);
-	else if (lst->conv == 'f')
-		lst->arg.f = va_arg(*ap, long double);
+	else if (lst->conv == 'f' || (lst->conv == 'f' && lst->l_m.l_mod[2]))
+		lst->arg.dbl = va_arg(*ap, double);
+	else if (lst->conv == 'f' && lst->l_m.l_mod[4])
+		lst->arg.l_dbl = va_arg(*ap, long double);
 	else if (lst->conv == '%')
 		lst->arg.s = ft_strdup("%");
 }

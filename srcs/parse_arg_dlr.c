@@ -6,13 +6,13 @@
 /*   By: afaddoul <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/08 19:03:25 by afaddoul          #+#    #+#             */
-/*   Updated: 2019/07/05 17:17:32 by afaddoul         ###   ########.fr       */
+/*   Updated: 2019/07/20 12:35:30 by afaddoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/libftprintf.h"
 
-t_tmp_data	**parse_arg_dlr(t_tmp_data **tab, va_list *ap, int index)
+void		parse_arg_dlr(t_tmp_data **tab, va_list *ap, int index)
 {
 	if (tab[index]->conv == 'c')
 		tab[index]->c = va_arg(*ap, int);
@@ -32,19 +32,23 @@ t_tmp_data	**parse_arg_dlr(t_tmp_data **tab, va_list *ap, int index)
 		tab[index]->x = va_arg(*ap, unsigned long long);
 	else if (tab[index]->conv == 'X')
 		tab[index]->big_x = va_arg(*ap, unsigned long long);
-	else if (tab[index]->conv == 'f')
-		tab[index]->f = va_arg(*ap, long double);
-	return (tab);
+	else if ((tab[index]->conv == 'f') ||
+			(tab[index]->conv == 'f' && tab[index]->lm[2]))
+		tab[index]->dbl = va_arg(*ap, double);
+	else if (tab[index]->conv == 'f' && tab[index]->lm[4])
+		tab[index]->l_dbl = va_arg(*ap, long double);
+	else if (tab[index]->conv == '%')
+		tab[index]->s = ft_strdup("%");
 }
 
 t_tmp_data	**fill_sorted_arr(t_tmp_data **tab, va_list *ap)
 {
-	int i;
+	int		i;
 
 	i = 0;
 	while (tab[i])
 	{
-		tab = parse_arg_dlr(tab, ap, i);
+		parse_arg_dlr(tab, ap, i);
 		i++;
 	}
 	return (tab);

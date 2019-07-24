@@ -6,7 +6,7 @@
 /*   By: afaddoul <afaddoul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/18 01:46:26 by afaddoul          #+#    #+#             */
-/*   Updated: 2019/07/11 12:06:51 by afaddoul         ###   ########.fr       */
+/*   Updated: 2019/07/20 12:00:34 by afaddoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,8 @@ void		init_args(t_shape *node)
 	node->arg.o = 0;
 	node->arg.x = 0;
 	node->arg.big_x = 0;
-	node->arg.f = 0;
+	node->arg.dbl = 0;
+	node->arg.l_dbl = 0;
 }
 
 t_shape		*fill_node(t_shape *node, t_arg *arg, int index, int flag)

@@ -6,7 +6,7 @@
 /*   By: afaddoul <afaddoul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/11 18:11:42 by afaddoul          #+#    #+#             */
-/*   Updated: 2019/07/19 21:36:27 by afaddoul         ###   ########.fr       */
+/*   Updated: 2019/07/24 17:03:25 by afaddoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,10 +24,12 @@
 **sorting_tmp_struct
 **-----------------------*
 */
+
 typedef	struct				s_tmp_data
 {
 	char					conv;
 	int						dlr;
+	int 					*lm;
 	int						c;
 	char					*s;
 	void					*p;
@@ -37,7 +39,8 @@ typedef	struct				s_tmp_data
 	unsigned long int		o;
 	unsigned long int		x;
 	unsigned long int		big_x;
-	long double				f;
+	double					dbl;
+	long double				l_dbl;
 	struct s_tmp_data		*next;
 }							t_tmp_data;
 
@@ -104,6 +107,12 @@ typedef	struct				s_flg
 	int						f_flg;
 }							t_flg;
 
+/*
+**-----------------------*
+**field_width_struct
+**-----------------------*
+*/
+
 typedef	struct				s_field_width
 {
 	int						f_w;
@@ -153,7 +162,8 @@ typedef	struct				s_data
 	unsigned long int		o;
 	unsigned long int		x;
 	unsigned long int		big_x;
-	long double				f;
+	double					dbl;
+	long double				l_dbl;
 }							t_data;
 
 /*
@@ -235,7 +245,7 @@ typedef struct				s_con_o
 
 /*
 **-----------------------*
-**conv_o_structer
+**conv_f_structer
 **-----------------------*
 */
 
@@ -258,6 +268,50 @@ typedef struct				s_multi
 	int 					tmp;
 }							t_multi;
 
+typedef struct				s_dbl_prts
+{
+	unsigned long 			manti : 52;
+	unsigned int			expo : 11;
+	unsigned int 			sign : 1;
+}							t_dbl_prts;
+
+typedef union				s_dbl
+{
+	double					dbl;
+	struct s_dbl_prts		dbl_d;
+}							t_dbl;
+
+typedef struct				s_ldbl_prts
+{
+	unsigned long 			manti : 63;
+	unsigned int			bit_int : 1;
+	unsigned int			expo : 15;
+	unsigned int 			sign : 1;
+}							t_ldbl_prts;
+
+typedef union				s_ldbl
+{
+	long double				dbl;
+	struct s_ldbl_prts		ldbl_d;
+}							t_ldbl;
+
+typedef struct				s_helper
+{
+	int 					shift;
+	char 					*mantissa;
+	char 					*nbr;
+	char 					*pow;
+	char 					*ten;
+	char 					*one;
+	char 					*zero;
+	char 					*tmp[2];
+	int						i;
+	int 					len;
+	int 					nbr_len;
+	int 					radix;
+
+}							t_helper;
+
 /*
 **-----------------------*
 **prototypes
@@ -276,7 +330,8 @@ t_arg						*rec_d(char *str, t_arg *arg, int start, int end);
 t_shape						*swap_dlr(t_shape *lst);
 t_shape						*parse_data(t_shape *node, char *str);
 t_data						**receive_adr(t_shape *lst, va_list *ap, int len);
-t_tmp_data					*add_node(t_tmp_data *head, char cv, int dlr);
+t_tmp_data					*add_node(t_tmp_data *head, char cv, int dlr,
+		int *l_modif);
 t_tmp_data					**cp_data(t_shape *lst, int len);
 void						cp_data_array_right(t_tmp_data **arr,
 		t_points *arrs, t_const *optim, int *i);
@@ -289,7 +344,7 @@ void						init_idx(int l, int *i);
 void						merge(t_tmp_data **arr, int l, int m, int r);
 void						merge_sort(t_tmp_data **arr, int l, int r);
 t_tmp_data					**fill_sorted_arr(t_tmp_data **tab, va_list *ap);
-t_tmp_data					**parse_arg_dlr(t_tmp_data **tab, va_list *ap,
+void						parse_arg_dlr(t_tmp_data **tab, va_list *ap,
 		int index);
 void						receive_dlr_args(t_shape *lst, t_tmp_data **tab);
 int							dlr_detector(t_shape *lst);
@@ -423,5 +478,6 @@ void						init_args(t_shape *node);
 
 char						*add_op(char *s1, char *s2);
 char						*multi_op(char *s1, char *s2);
+char						*ft_str_power(char *base, int pow);
 
 #endif

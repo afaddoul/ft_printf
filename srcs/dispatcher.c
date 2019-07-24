@@ -6,7 +6,7 @@
 /*   By: afaddoul <afaddoul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/19 14:43:55 by afaddoul          #+#    #+#             */
-/*   Updated: 2019/07/11 20:10:20 by afaddoul         ###   ########.fr       */
+/*   Updated: 2019/07/20 13:34:14 by afaddoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,10 @@ int						index_finder(t_shape *node)
 		i = 7;
 	else if (node->conv == 'o')
 		i = 8;
-	else if (node->conv == 'f')
+	else if (node->conv == 'f' || (node->conv == 'f' && node->l_m.l_mod[2]))
 		i = 9;
+	else if (node->conv == 'f' && node->l_m.l_mod[4])
+		i = 10;
 	return (i);
 }
 

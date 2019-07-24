@@ -6,7 +6,7 @@
 /*   By: afaddoul <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/14 20:13:17 by afaddoul          #+#    #+#             */
-/*   Updated: 2019/06/20 19:34:49 by afaddoul         ###   ########.fr       */
+/*   Updated: 2019/07/20 12:25:35 by afaddoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,13 @@ static void		arg_filler(t_shape *lst, t_tmp_data **tab, int index)
 		lst->arg.x = tab[index]->x;
 	else if (tab[index]->conv == 'X')
 		lst->arg.big_x = tab[index]->big_x;
-	else if (tab[index]->conv == 'f')
-		lst->arg.f = tab[index]->f;
+	else if (tab[index]->conv == 'f' || (tab[index]->conv == 'f' &&
+				tab[index]->lm[2]))
+		lst->arg.dbl = tab[index]->dbl;
+	else if (tab[index]->conv == 'f' && tab[index]->lm[4])
+		lst->arg.l_dbl = tab[index]->l_dbl;
+	else if (lst->conv == '%')
+		lst->arg.s = ft_strdup("%");
 }
 
 void			receive_dlr_args(t_shape *lst, t_tmp_data **tab)

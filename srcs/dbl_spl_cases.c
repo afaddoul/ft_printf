@@ -1,31 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_len_strdup.c                                    :+:      :+:    :+:   */
+/*   dbl_spl_cases.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: afaddoul <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/06/25 10:08:14 by afaddoul          #+#    #+#             */
-/*   Updated: 2019/07/27 19:45:33 by afaddoul         ###   ########.fr       */
+/*   Created: 2019/07/28 17:59:46 by afaddoul          #+#    #+#             */
+/*   Updated: 2019/07/28 21:26:45 by afaddoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/libftprintf.h"
 
-char	*ft_strdup_len(char *s1, int len)
+int				spl_case(t_dbl f)
 {
-	char	*pointer;
-	int		i;
-
-	i = 0;
-	pointer = (char*)malloc(sizeof(char) * (len + 1));
-	if (pointer == NULL)
-		return (NULL);
-	while (i < len && s1[i])
+	if (f.dbl_d.expo == 2047)
 	{
-		pointer[i] = s1[i];
-		i++;
+		if (f.dbl_d.manti)
+			return (0);
+		if (f.dbl_d.sign == 0)
+			return (1);
+		else if (f.dbl_d.sign == 1)
+			return (-1);
 	}
-	pointer[i] = '\0';
-	return (pointer);
+	return (2);
+}
+
+char			*sp_case_ret(int flag)
+{
+	char		*str;
+
+	str = NULL;
+	if (flag == -1)
+		str = ft_strdup("-inf");
+	else if (flag == 0)
+		str = ft_strdup("nan");
+	else if (flag == 1)
+		str = ft_strdup("inf");
+	return (str);
 }

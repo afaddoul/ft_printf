@@ -6,7 +6,7 @@
 /*   By: afaddoul <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/17 11:30:35 by afaddoul          #+#    #+#             */
-/*   Updated: 2019/07/24 14:34:12 by afaddoul         ###   ########.fr       */
+/*   Updated: 2019/07/28 20:59:17 by afaddoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void			swap_str(char **s1, char **s2)
 	*s2 = tmp;
 }
 
-static void init_var(t_add **ad, char **str, char **s1, char **s2)
+static void		init_var(t_add **ad, char **str, char **s1, char **s2)
 {
 	*ad = (t_add*)malloc(sizeof(t_add));
 	(*ad)->i = 0;
@@ -42,7 +42,6 @@ char			*add_op(char *s1, char *s2)
 	t_add	*ad;
 	char	*str;
 
-	ad = NULL;
 	init_var(&ad, &str, &s1, &s2);
 	while (ad->i < ad->len_1)
 	{
@@ -60,6 +59,6 @@ char			*add_op(char *s1, char *s2)
 	}
 	str[ad->i] = (ad->quotient) ? (ad->quotient + '0') : str[ad->i];
 	ft_strrev(str);
-	free(ad);
+	ft_memdel((void**)&ad);
 	return (str);
 }

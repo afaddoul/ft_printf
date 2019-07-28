@@ -6,7 +6,7 @@
 /*   By: afaddoul <afaddoul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/11 18:11:42 by afaddoul          #+#    #+#             */
-/*   Updated: 2019/07/24 17:03:25 by afaddoul         ###   ########.fr       */
+/*   Updated: 2019/07/28 23:21:02 by afaddoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -312,6 +312,23 @@ typedef struct				s_helper
 
 }							t_helper;
 
+typedef struct				s_nb
+{
+	char 					*int_vl;
+	char 					*frac_vl;
+	int 					int_len;
+	int 					frac_len;
+}							t_nb;
+
+typedef struct				s_optim
+{
+	char 					*tmp;
+	char 					*frac_cpy;
+	int 					pre;
+	int 					i;
+	int 					round;
+}							t_optim;
+
 /*
 **-----------------------*
 **prototypes
@@ -479,5 +496,26 @@ void						init_args(t_shape *node);
 char						*add_op(char *s1, char *s2);
 char						*multi_op(char *s1, char *s2);
 char						*ft_str_power(char *base, int pow);
+char						*extract_mantissa(unsigned long manti);
+char						*remove_first_zeros(char **nbr);
+void						compute_mantissa(t_helper *dbl, t_dbl f);
+void						compute_exp_radix(t_helper *dbl, t_dbl f);
+char						*put_radix_and_trim_zeros(t_helper *dbl);
+int							spl_case(t_dbl f);
+char						*sp_case_ret(int flag);
+t_nb						*ft_int_frac(char *str);
+void						dbl_init_vars(t_helper **dbl);
+char						*ft_chopping(t_shape *node, char *str);
+char						*dbl_dispatcher(t_shape *node);
+char						*cpy_str(char *s1, char *s2);
+void						join_dbl_components(char **str, t_nb *nb,
+		t_optim *opt);
+void						adjust_len(t_nb *nb, t_optim *opt);
+void						precision_true(t_shape *node, char **str, t_nb *nb,
+		t_optim *opt);
+void						true_ties_to_even(t_nb *nb, t_optim *opt);
+void						precision_false(t_shape *node, char **str,
+		t_nb *nb, t_optim *opt);
+void						flse_ties_to_even(t_nb *nb, t_optim *opt);
 
 #endif

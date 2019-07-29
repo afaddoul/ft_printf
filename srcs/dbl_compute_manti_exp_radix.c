@@ -6,7 +6,7 @@
 /*   By: afaddoul <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/28 18:04:13 by afaddoul          #+#    #+#             */
-/*   Updated: 2019/07/28 18:07:08 by afaddoul         ###   ########.fr       */
+/*   Updated: 2019/07/29 18:25:10 by afaddoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,13 +32,18 @@ char			*extract_mantissa(unsigned long manti)
 
 void			compute_mantissa(t_helper *dbl, t_dbl f)
 {
+	int 		check;
+
+	check = 0;
 	dbl->mantissa = extract_mantissa(f.dbl_d.manti);
 	dbl->nbr = (f.dbl_d.expo == 0) ? dbl->zero : dbl->one;
 	while (dbl->mantissa[dbl->i])
 	{
 		dbl->tmp[0] = dbl->nbr;
 		dbl->nbr = multi_op(dbl->nbr, dbl->ten);
-		ft_strdel(&(dbl->tmp[0]));
+		if (check > 0)
+			free(dbl->tmp[0]);
+		check++;
 		if (dbl->mantissa[dbl->i] == '1')
 		{
 			dbl->tmp[0] = dbl->nbr;

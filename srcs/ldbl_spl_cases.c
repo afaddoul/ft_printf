@@ -1,39 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   conv_dbl.c                                         :+:      :+:    :+:   */
+/*   dbl_spl_cases.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: afaddoul <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/07/20 13:34:29 by afaddoul          #+#    #+#             */
-/*   Updated: 2019/07/29 15:16:11 by afaddoul         ###   ########.fr       */
+/*   Created: 2019/07/28 17:59:46 by afaddoul          #+#    #+#             */
+/*   Updated: 2019/07/29 13:50:48 by afaddoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/libftprintf.h"
-#include <limits.h>
-#include <float.h>
-#include <limits.h>
 
-char			*dbl_dispatcher(t_shape *node)
+int				l_spl_case(t_ldbl f)
 {
-	t_helper	*dbl;
-	t_dbl		f;
-	char		*str;
-	char		*tmp;
-	int			sp_case;
+	if (f.ldbl_d.expo == 32767)
+	{
+		if (f.ldbl_d.manti)
+			return (0);
+		if (f.ldbl_d.sign == 0)
+			return (1);
+		else if (f.ldbl_d.sign == 1)
+			return (-1);
+	}
+	return (2);
+}
 
-	dbl = NULL;
-	f.dbl = node->arg.dbl;
-	dbl_init_vars(&dbl);
-	sp_case = spl_case(f);
-	if (sp_case == -1 || sp_case == 0 || sp_case == 1)
-		return (sp_case_ret(sp_case));
-	compute_mantissa(dbl, f);
-	compute_exp_radix(dbl, f);
-	str = put_radix_and_trim_zeros(dbl);
-	tmp = str;
-	str = ft_chopping(node, str);
-	free(tmp);
+char			*l_sp_case_ret(int flag)
+{
+	char		*str;
+
+	str = NULL;
+	if (flag == -1)
+		str = ft_strdup("-inf");
+	else if (flag == 0)
+		str = ft_strdup("nan");
+	else if (flag == 1)
+		str = ft_strdup("inf");
 	return (str);
 }

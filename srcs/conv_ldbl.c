@@ -1,37 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   conv_dbl.c                                         :+:      :+:    :+:   */
+/*   conv_ldbl.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: afaddoul <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/20 13:34:29 by afaddoul          #+#    #+#             */
-/*   Updated: 2019/07/29 15:16:11 by afaddoul         ###   ########.fr       */
+/*   Updated: 2019/07/29 18:25:39 by afaddoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/libftprintf.h"
 #include <limits.h>
 #include <float.h>
-#include <limits.h>
 
-char			*dbl_dispatcher(t_shape *node)
+char			*ldbl_dispatcher(t_shape *node)
 {
-	t_helper	*dbl;
-	t_dbl		f;
+	t_helper	*ldbl;
+	t_ldbl		f;
 	char		*str;
 	char		*tmp;
 	int			sp_case;
 
-	dbl = NULL;
-	f.dbl = node->arg.dbl;
-	dbl_init_vars(&dbl);
-	sp_case = spl_case(f);
+	ldbl = NULL;
+	f.ldbl = node->arg.l_dbl;
+	ldbl_init_vars(&ldbl);
+	sp_case = l_spl_case(f);
 	if (sp_case == -1 || sp_case == 0 || sp_case == 1)
-		return (sp_case_ret(sp_case));
-	compute_mantissa(dbl, f);
-	compute_exp_radix(dbl, f);
-	str = put_radix_and_trim_zeros(dbl);
+		return (l_sp_case_ret(sp_case));
+	l_compute_mantissa(ldbl, f);
+	l_compute_exp_radix(ldbl, f);
+	str = l_put_radix_and_trim_zeros(ldbl);
 	tmp = str;
 	str = ft_chopping(node, str);
 	free(tmp);

@@ -6,58 +6,36 @@
 /*   By: afaddoul <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/28 18:07:30 by afaddoul          #+#    #+#             */
-/*   Updated: 2019/07/29 18:03:28 by afaddoul         ###   ########.fr       */
+/*   Updated: 2019/07/29 18:23:39 by afaddoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/libftprintf.h"
 
-char			*remove_first_zeros(char **nbr)
-{
-	int			i;
-	int			len;
-	char		*str;
-
-	i = 0;
-	len = ft_strlen(*nbr);
-	while ((*nbr)[i])
-	{
-		if (((*nbr)[i] == '0' && (*nbr)[i + 1] == '.') ||
-				((*nbr)[i] >= '1' && (*nbr)[i] <= '9'))
-			break ;
-		i++;
-	}
-	str = ft_strnew(len - i);
-	len = 0;
-	while ((*nbr)[i])
-		str[len++] = (*nbr)[i++];
-	free(*nbr);
-	return (str);
-}
-
-char			*put_radix_and_trim_zeros(t_helper *dbl)
+char			*l_put_radix_and_trim_zeros(t_helper *ldbl)
 {
 	char		*str;
 
-	str = ft_strnew(dbl->len);
-	str = ft_memset(str, '0', dbl->len);
-	while (dbl->len > -1)
+	str = ft_strnew(ldbl->len);
+	str = ft_memset(str, '0', ldbl->len);
+	while (ldbl->len > -1)
 	{
-		if (dbl->radix == -1)
+		if (ldbl->radix == -1)
 		{
-			str[dbl->len] = '.';
-			dbl->radix--;
-			dbl->len--;
+			str[ldbl->len] = '.';
+			ldbl->radix--;
+			ldbl->len--;
 		}
 		else
 		{
-			str[dbl->len] = dbl->nbr[dbl->nbr_len];
-			dbl->len--;
-			dbl->nbr_len--;
-			dbl->radix--;
+			str[ldbl->len] = ldbl->nbr[ldbl->nbr_len];
+			ldbl->len--;
+			ldbl->nbr_len--;
+			ldbl->radix--;
 		}
 	}
 	str = remove_first_zeros(&str);
-	multi_free(5, dbl->mantissa, dbl->pow, dbl->nbr, dbl->ten, dbl->zero, dbl);
+	multi_free(6, ldbl->mantissa, ldbl->pow, ldbl->nbr, ldbl->ten ,ldbl->zero,
+			 ldbl);
 	return (str);
 }

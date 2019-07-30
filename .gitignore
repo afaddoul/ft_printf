@@ -3,5 +3,6 @@
 *.out
 *.swp
 *.gch
+*.dSYM
 .DS_Store
 __pycache__

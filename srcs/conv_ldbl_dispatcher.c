@@ -1,41 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   dbl_spl_cases.c                                    :+:      :+:    :+:   */
+/*   conv_ldbl.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: afaddoul <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/07/28 17:59:46 by afaddoul          #+#    #+#             */
-/*   Updated: 2019/07/30 19:32:57 by afaddoul         ###   ########.fr       */
+/*   Created: 2019/07/20 13:34:29 by afaddoul          #+#    #+#             */
+/*   Updated: 2019/07/30 23:14:08 by afaddoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/libftprintf.h"
+#include <limits.h>
+#include <float.h>
 
-int				l_spl_case(t_ldbl f)
+char			*ldbl_dispatcher(t_shape *node)
 {
-	if (f.ldbl_d.expo == 32767)
-	{
-		if (f.ldbl_d.manti)
-			return (0);
-		if (f.ldbl_d.sign == 0)
-			return (1);
-		else if (f.ldbl_d.sign == 1)
-			return (-1);
-	}
-	return (2);
-}
-
-char			*l_sp_case_ret(int flag)
-{
+	t_helper	*ldbl;
+	t_ldbl		f;
 	char		*str;
+	char		*tmp;
+	int			sp_case;
 
-	str = NULL;
-	if (flag == -1)
-		str = ft_strdup("-inf");
-	else if (flag == 0)
-		str = ft_strdup("nan");
-	else if (flag == 1)
-		str = ft_strdup("inf");
+	ldbl = NULL;
+	f.ldbl = node->arg.l_dbl;
+	ldbl_init_vars(&ldbl);
+	sp_case = l_spl_case(f);
+	if (sp_case == -1 || sp_case == 0 || sp_case == 1)
+		return (l_sp_case_ret(sp_case));
+	l_compute_mantissa(ldbl, f);
+	l_compute_exp_radix(ldbl, f);
+	str = l_put_radix_and_trim_zeros(ldbl);
+	tmp = str;
+	str = ft_chopping(node, str);
+	free(tmp);
 	return (str);
 }

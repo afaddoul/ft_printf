@@ -1,5 +1,8 @@
 *.a
 *.o
 *.out
-*.swp*.gch
+*.swp
+*.gch
 .DS_Store
+*.dSYM
+__pycache__

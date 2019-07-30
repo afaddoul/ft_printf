@@ -5,35 +5,99 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: afaddoul <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/07/20 13:34:29 by afaddoul          #+#    #+#             */
-/*   Updated: 2019/07/29 15:16:11 by afaddoul         ###   ########.fr       */
+/*   Created: 2019/07/30 15:40:15 by afaddoul          #+#    #+#             */
+/*   Updated: 2019/07/30 20:36:09 by afaddoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/libftprintf.h"
-#include <limits.h>
-#include <float.h>
-#include <limits.h>
 
-char			*dbl_dispatcher(t_shape *node)
+void 			conv_dbl(t_shape *node)
 {
-	t_helper	*dbl;
-	t_dbl		f;
-	char		*str;
-	char		*tmp;
-	int			sp_case;
+	char 		*tmp;
+	t_dbl		*uni;
+	t_conv_dbl	*dbl;
 
-	dbl = NULL;
-	f.dbl = node->arg.dbl;
-	dbl_init_vars(&dbl);
-	sp_case = spl_case(f);
-	if (sp_case == -1 || sp_case == 0 || sp_case == 1)
-		return (sp_case_ret(sp_case));
-	compute_mantissa(dbl, f);
-	compute_exp_radix(dbl, f);
-	str = put_radix_and_trim_zeros(dbl);
-	tmp = str;
-	str = ft_chopping(node, str);
-	free(tmp);
-	return (str);
+	uni = ft_memalloc(sizeof(t_dbl));
+	dbl = ft_memalloc(sizeof(t_conv_dbl));
+	uni->dbl = node->arg.dbl;
+	dbl->sign = uni->dbl_d.sign;
+	dbl->i = 0;
+	dbl->arg = dbl_dispatcher(node);
+	dbl->arg_len = ft_strlen(dbl->arg);
+	dbl->len = dbl->arg_len;
+	if (node->flg.flg[3] && node->flg.flg[1])
+		node->flg.flg[3] = 0;
+	if (node->flg.flg[2] && node->flg.flg[0])
+		node->flg.flg[2] = 0;
+	if (node->flg.flg[0] && node->flg.flg[1])
+		node->flg.flg[0] = 0;
+	if (node->field_w.f_w >= dbl->arg_len)
+		dbl->len = node->field_w.f_w;
+	else if (dbl->arg_len > node->field_w.f_w)
+		dbl->len = dbl->arg_len;
+	tmp = ft_strnew(dbl->len);
+	tmp = ft_memset(tmp, ' ', dbl->len);
+	if (node->flg.flg[0])
+	{
+		if (dbl->sign == 1)
+			tmp[dbl->cursor++] = '-';
+		if (node->flg.flg[1] || node->flg.flg[3])
+		{
+			if (node->flg.flg[1])
+				tmp[(dbl->cursor)++] = '+';
+			else
+				dbl->cursor++;
+		}
+		else
+		{
+			while (tmp[(dbl->cursor)])
+				tmp[(dbl->cursor)++] = dbl->arg[(dbl->i)++];
+		}
+	}
+	else
+	{
+		if (!node->flg.flg[2])
+		{
+			dbl->cursor = dbl->len - dbl->arg_len - dbl->sign;
+			if (dbl->sign == 1)
+				tmp[dbl->cursor++] = '-';
+			if (node->flg.flg[1] || node->flg.flg[3])
+			{
+				if (node->flg.flg[1])
+					tmp[(dbl->cursor)++] = '+';
+				else
+					dbl->cursor++;
+			}
+			else
+			{
+				(dbl->cursor)++;
+				while (tmp[(dbl->cursor)])
+					tmp[(dbl->cursor)++] = dbl->arg[(dbl->i)++];
+			}
+		}
+		else
+		{
+			if (dbl->sign == 1)
+				tmp[dbl->cursor++] = '-';
+			if (node->flg.flg[1] || node->flg.flg[3])
+			{
+				if (node->flg.flg[1])
+					tmp[(dbl->cursor)++] = '+';
+				else
+					dbl->cursor++;
+			}
+			dbl->zr = dbl->len - dbl->arg_len - dbl->sign;
+			while (dbl->zr)
+			{
+				tmp[(dbl->cursor)++] = '0';
+				dbl->zr--;
+			}
+			while (tmp[(dbl->cursor)])
+				tmp[(dbl->cursor)++] = dbl->arg[(dbl->i)++];
+		}
+	}
+	realloc_shape(node, tmp, dbl->cursor);
+	free(uni);
+	free(dbl);
 }

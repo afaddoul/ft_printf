@@ -6,7 +6,7 @@
 /*   By: afaddoul <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/28 18:07:30 by afaddoul          #+#    #+#             */
-/*   Updated: 2019/07/29 18:23:39 by afaddoul         ###   ########.fr       */
+/*   Updated: 2019/07/30 23:11:24 by afaddoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ char			*l_put_radix_and_trim_zeros(t_helper *ldbl)
 		}
 	}
 	str = remove_first_zeros(&str);
-	multi_free(6, ldbl->mantissa, ldbl->pow, ldbl->nbr, ldbl->ten ,ldbl->zero,
-			 ldbl);
+	multi_free(7, ldbl->mantissa, ldbl->pow, ldbl->nbr, ldbl->ten, ldbl->zero,
+		   	ldbl->one, ldbl);
 	return (str);
 }

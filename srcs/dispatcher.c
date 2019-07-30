@@ -6,7 +6,7 @@
 /*   By: afaddoul <afaddoul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/19 14:43:55 by afaddoul          #+#    #+#             */
-/*   Updated: 2019/07/28 21:23:49 by afaddoul         ###   ########.fr       */
+/*   Updated: 2019/07/30 15:53:35 by afaddoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,8 +40,8 @@ void					index_finder(t_shape *node, int *i)
 
 void					checker(t_shape *node, int i)
 {
-	static void			(*fct_p_arr[9])(t_shape*) = {conv_c, conv_s, conv_p,
-		conv_d, conv_percent, conv_u, conv_x, conv_big_x, conv_o};
+	static void			(*fct_p_arr[10])(t_shape*) = {conv_c, conv_s, conv_p,
+		conv_d, conv_percent, conv_u, conv_x, conv_big_x, conv_o, conv_dbl};
 
 	(fct_p_arr[i])(node);
 }

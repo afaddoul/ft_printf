@@ -6,7 +6,7 @@
 #    By: afaddoul <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/05/11 18:06:13 by afaddoul          #+#    #+#              #
-#    Updated: 2019/07/19 21:22:27 by afaddoul         ###   ########.fr        #
+#    Updated: 2019/07/30 23:22:46 by afaddoul         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,7 @@ NAME = libftprintf.a
 all : $(NAME)
 
 $(NAME) :
-	@gcc -Wextra -Wall -Werror -c srcs/*.c libs/libft/*.c -I includes
+	@gcc -Wextra -Wall -Werror -c srcs/*.c libft/*.c -I includes
 	@ar rc $(NAME) *.o
 
 clean :

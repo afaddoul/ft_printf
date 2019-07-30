@@ -6,7 +6,7 @@
 /*   By: afaddoul <afaddoul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/11 18:11:42 by afaddoul          #+#    #+#             */
-/*   Updated: 2019/07/30 23:15:24 by afaddoul         ###   ########.fr       */
+/*   Updated: 2019/07/30 23:35:18 by afaddoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ typedef	struct				s_tmp_data
 {
 	char					conv;
 	int						dlr;
-	int 					*lm;
+	int						*lm;
 	int						c;
 	char					*s;
 	void					*p;
@@ -249,33 +249,33 @@ typedef struct				s_con_o
 **-----------------------*
 */
 
-typedef struct 				s_add
+typedef struct				s_add
 {
-	int 					i;
-	int 					len_1;
-	int 					len_2;
-	int 					quotient;
-	int 					sum;
+	int						i;
+	int						len_1;
+	int						len_2;
+	int						quotient;
+	int						sum;
 }							t_add;
 
 typedef struct				s_multi
 {
-	int 					i;
-	int 					j;
-	int 					len_1;
-	int 					len_2;
-	int 					quotient;
-	int 					tmp;
+	int						i;
+	int						j;
+	int						len_1;
+	int						len_2;
+	int						quotient;
+	int						tmp;
 }							t_multi;
 
 typedef struct				s_dbl_prts
 {
-	unsigned long 			manti : 52;
+	unsigned long			manti : 52;
 	unsigned int			expo : 11;
-	unsigned int 			sign : 1;
+	unsigned int			sign : 1;
 }							t_dbl_prts;
 
-typedef union				s_dbl
+typedef union				u_dbl
 {
 	double					dbl;
 	struct s_dbl_prts		dbl_d;
@@ -283,13 +283,13 @@ typedef union				s_dbl
 
 typedef struct				s_ldbl_prts
 {
-	unsigned long 			manti : 63;
+	unsigned long			manti : 63;
 	unsigned int			bit_int : 1;
 	unsigned int			expo : 15;
-	unsigned int 			sign : 1;
+	unsigned int			sign : 1;
 }							t_ldbl_prts;
 
-typedef union				s_ldbl
+typedef union				u_ldbl
 {
 	long double				ldbl;
 	struct s_ldbl_prts		ldbl_d;
@@ -297,36 +297,36 @@ typedef union				s_ldbl
 
 typedef struct				s_helper
 {
-	int 					shift;
-	char 					*mantissa;
-	char 					*nbr;
-	char 					*pow;
-	char 					*ten;
-	char 					*one;
-	char 					*zero;
-	char 					*tmp[2];
+	int						shift;
+	char					*mantissa;
+	char					*nbr;
+	char					*pow;
+	char					*ten;
+	char					*one;
+	char					*zero;
+	char					*tmp[2];
 	int						i;
-	int 					len;
-	int 					nbr_len;
-	int 					radix;
+	int						len;
+	int						nbr_len;
+	int						radix;
 
 }							t_helper;
 
 typedef struct				s_nb
 {
-	char 					*int_vl;
-	char 					*frac_vl;
-	int 					int_len;
-	int 					frac_len;
+	char					*int_vl;
+	char					*frac_vl;
+	int						int_len;
+	int						frac_len;
 }							t_nb;
 
 typedef struct				s_optim
 {
-	char 					*tmp;
-	char 					*frac_cpy;
-	int 					pre;
-	int 					i;
-	int 					round;
+	char					*tmp;
+	char					*frac_cpy;
+	int						pre;
+	int						i;
+	int						round;
 }							t_optim;
 
 typedef	struct				s_conv_dbl
@@ -336,9 +336,9 @@ typedef	struct				s_conv_dbl
 	int						len;
 	int						cursor;
 	int						counter;
-	int 					sign;
-	int 					i;
-	int 					zr;
+	int						sign;
+	int						i;
+	int						zr;
 }							t_conv_dbl;
 
 /*
@@ -539,7 +539,6 @@ char						*multi_op(char *s1, char *s2);
 char						*ft_str_power(char *base, int pow);
 int							l_spl_case(t_ldbl f);
 char						*l_sp_case_ret(int flag);
-
 void						conv_dbl(t_shape *node);
 
 #endif

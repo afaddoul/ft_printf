@@ -6,7 +6,7 @@
 /*   By: afaddoul <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/25 10:08:14 by afaddoul          #+#    #+#             */
-/*   Updated: 2019/07/27 19:45:33 by afaddoul         ###   ########.fr       */
+/*   Updated: 2019/07/30 14:22:54 by afaddoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ char	*ft_strdup_len(char *s1, int len)
 	pointer = (char*)malloc(sizeof(char) * (len + 1));
 	if (pointer == NULL)
 		return (NULL);
-	while (i < len && s1[i])
+	while (i < len)
 	{
 		pointer[i] = s1[i];
 		i++;

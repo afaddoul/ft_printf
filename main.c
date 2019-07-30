@@ -6,7 +6,7 @@
 /*   By: yidabdes <yidabdes@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/17 00:50:27 by yidabdes          #+#    #+#             */
-/*   Updated: 2019/07/18 18:34:39 by afaddoul         ###   ########.fr       */
+/*   Updated: 2019/07/30 14:41:39 by afaddoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@
 
 int			main(void)
 {
-
 // // ---------------> conv_s
 	ft_printf("%s|%-s|%23s|%.5s|%.50s|%-23s|%-.5s|%-.50s|%23.5s|%23.50s|%-23.5s|%-23.50s", NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 	ft_printf("%s|%-s|%23s|%.5s|%.50s|%-23s|%-.5s|%-.50s|%23.5s|%23.50s|%-23.5s|%-23.50s", "wi32x-3vx++===98234z1esfatr", "wi32x-3vx++===98234z1esfatr", "wi32x-3vx++===98234z1esfatr", "wi32x-3vx++===98234z1esfatr", "wi32x-3vx++===98234z1esfatr", "wi32x-3vx++===98234z1esfatr", "wi32x-3vx++===98234z1esfatr", "wi32x-3vx++===98234z1esfatr", "wi32x-3vx++===98234z1esfatr", "wi32x-3vx++===98234z1esfatr", "wi32x-3vx++===98234z1esfatr", "wi32x-3vx++===98234z1esfatr");
@@ -951,8 +950,8 @@ ft_printf("%c|%-c|%12c|%-12c", 1345, 1345, 1345, 1345);
 
 
 // // ---------------> conv_d
-
-/*	ft_printf("%f|%-f|%+f|% f|%#f|%0f", 0., 0., 0., 0., 0., 0.);
+/*
+	ft_printf("%f|%-f|%+f|% f|%#f|%0f", 0., 0., 0., 0., 0., 0.);
 	ft_printf("%5f|%-5f|%+5f|% 5f|%#5f|%05f", 0., 0., 0., 0., 0., 0.);
 	ft_printf("%1f|%-1f|%+1f|% 1f|%#1f|%01f", 0., 0., 0., 0., 0., 0.);
 	ft_printf("%.f|%-.f|%+.f|% .f|%#.f|%0.f", 0., 0., 0., 0., 0., 0.);
@@ -1054,8 +1053,5 @@ ft_printf("%c|%-c|%12c|%-12c", 1345, 1345, 1345, 1345);
 	
 */
 // // ---------------> conv_%
-	ft_printf("%|%%|%%%|%%%%");
-	ft_printf("% |% h|% hZ");
-	ft_printf("%%-%|%%+%|%% %|%%#%");
 	return (0);
 }

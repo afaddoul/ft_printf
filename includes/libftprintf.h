@@ -6,7 +6,7 @@
 /*   By: afaddoul <afaddoul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/11 18:11:42 by afaddoul          #+#    #+#             */
-/*   Updated: 2019/07/28 23:21:02 by afaddoul         ###   ########.fr       */
+/*   Updated: 2019/07/30 13:58:59 by afaddoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -291,7 +291,7 @@ typedef struct				s_ldbl_prts
 
 typedef union				s_ldbl
 {
-	long double				dbl;
+	long double				ldbl;
 	struct s_ldbl_prts		ldbl_d;
 }							t_ldbl;
 
@@ -381,6 +381,8 @@ t_shape						*s_checker(t_shape *lst, va_list *ap);
 t_shape						*p_checker(t_shape *lst, va_list *ap);
 
 t_shape						*special_case(t_shape *node);
+t_shape						*realloc_shape_conv_c(t_shape *node,
+		char **tmp, int len);
 /*
 **-----------------------*
 **conv_c
@@ -489,7 +491,7 @@ void						init_args(t_shape *node);
 
 /*
 **-----------------------*
-**conv_f
+**conv_dbl
 **-----------------------*
 */
 
@@ -517,5 +519,19 @@ void						true_ties_to_even(t_nb *nb, t_optim *opt);
 void						precision_false(t_shape *node, char **str,
 		t_nb *nb, t_optim *opt);
 void						flse_ties_to_even(t_nb *nb, t_optim *opt);
+
+/*
+**-----------------------*
+**conv_ldbl
+**-----------------------*
+*/
+char						*ldbl_dispatcher(t_shape *node);
+void						l_compute_mantissa(t_helper *ldbl, t_ldbl f);
+void						l_compute_exp_radix(t_helper *ldbl, t_ldbl f);
+char						*extract_l_mantissa(unsigned long manti);
+void						ldbl_init_vars(t_helper **ldbl);
+char						*l_put_radix_and_trim_zeros(t_helper *ldbl);
+int							l_spl_case(t_ldbl f);
+char						*l_sp_case_ret(int flag);
 
 #endif

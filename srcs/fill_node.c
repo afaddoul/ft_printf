@@ -6,7 +6,7 @@
 /*   By: afaddoul <afaddoul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/18 01:46:26 by afaddoul          #+#    #+#             */
-/*   Updated: 2019/07/20 12:00:34 by afaddoul         ###   ########.fr       */
+/*   Updated: 2019/07/30 14:39:47 by afaddoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,8 @@ t_shape		*fill_node(t_shape *node, t_arg *arg, int index, int flag)
 		node->p.pre_flg = arg->pre_star;
 		node->index = index;
 		node->conv = arg->cv;
+		if (conv_finder(node->conv))
+			exit(-1);
 		node = parse_data(node, arg->buff);
 	}
 	free(arg);

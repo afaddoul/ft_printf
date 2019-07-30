@@ -4,5 +4,4 @@
 *.swp
 *.gch
 .DS_Store
-*.dSYM
 __pycache__

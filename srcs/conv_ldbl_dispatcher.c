@@ -6,7 +6,7 @@
 /*   By: afaddoul <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/20 13:34:29 by afaddoul          #+#    #+#             */
-/*   Updated: 2019/07/30 23:14:08 by afaddoul         ###   ########.fr       */
+/*   Updated: 2019/07/31 19:28:46 by afaddoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,8 @@ char			*ldbl_dispatcher(t_shape *node)
 		return (l_sp_case_ret(sp_case));
 	l_compute_mantissa(ldbl, f);
 	l_compute_exp_radix(ldbl, f);
+	printf("|%s|\n\n\n|%s|\n\n\n|%s|\n", ldbl->mantissa, ldbl->pow, ldbl->nbr);
+	exit(0)	;
 	str = l_put_radix_and_trim_zeros(ldbl);
 	tmp = str;
 	str = ft_chopping(node, str);

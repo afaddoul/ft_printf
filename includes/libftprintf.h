@@ -6,7 +6,7 @@
 /*   By: afaddoul <afaddoul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/11 18:11:42 by afaddoul          #+#    #+#             */
-/*   Updated: 2019/07/30 23:35:18 by afaddoul         ###   ########.fr       */
+/*   Updated: 2019/07/31 19:36:51 by afaddoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,9 @@
 # include <stdarg.h>
 # include <unistd.h>
 # include <stdlib.h>
+# include <limits.h>
+# include <float.h>
+#include <math.h>
 
 /*
 **-----------------------*
@@ -540,5 +543,6 @@ char						*ft_str_power(char *base, int pow);
 int							l_spl_case(t_ldbl f);
 char						*l_sp_case_ret(int flag);
 void						conv_dbl(t_shape *node);
+void						conv_ldbl(t_shape *node);
 
 #endif

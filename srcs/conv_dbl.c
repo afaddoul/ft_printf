@@ -6,15 +6,15 @@
 /*   By: afaddoul <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/30 15:40:15 by afaddoul          #+#    #+#             */
-/*   Updated: 2019/07/30 20:36:09 by afaddoul         ###   ########.fr       */
+/*   Updated: 2019/07/31 20:29:40 by afaddoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/libftprintf.h"
 
-void 			conv_dbl(t_shape *node)
+void			conv_dbl(t_shape *node)
 {
-	char 		*tmp;
+	char		*tmp;
 	t_dbl		*uni;
 	t_conv_dbl	*dbl;
 
@@ -23,6 +23,7 @@ void 			conv_dbl(t_shape *node)
 	uni->dbl = node->arg.dbl;
 	dbl->sign = uni->dbl_d.sign;
 	dbl->i = 0;
+	dbl->cursor = 0;
 	dbl->arg = dbl_dispatcher(node);
 	dbl->arg_len = ft_strlen(dbl->arg);
 	dbl->len = dbl->arg_len;
@@ -36,6 +37,9 @@ void 			conv_dbl(t_shape *node)
 		dbl->len = node->field_w.f_w;
 	else if (dbl->arg_len > node->field_w.f_w)
 		dbl->len = dbl->arg_len;
+	if ((dbl->len <= dbl->arg_len) &&
+			(node->flg.flg[1] || node->flg.flg[3] || dbl->sign))
+		dbl->len++;
 	tmp = ft_strnew(dbl->len);
 	tmp = ft_memset(tmp, ' ', dbl->len);
 	if (node->flg.flg[0])
@@ -49,32 +53,27 @@ void 			conv_dbl(t_shape *node)
 			else
 				dbl->cursor++;
 		}
-		else
-		{
-			while (tmp[(dbl->cursor)])
-				tmp[(dbl->cursor)++] = dbl->arg[(dbl->i)++];
-		}
+		while (tmp[(dbl->cursor)] && dbl->arg_len--)
+			tmp[(dbl->cursor)++] = dbl->arg[(dbl->i)++];
 	}
 	else
 	{
 		if (!node->flg.flg[2])
 		{
-			dbl->cursor = dbl->len - dbl->arg_len - dbl->sign;
+			dbl->cursor = dbl->len - dbl->arg_len;
+			if (dbl->sign || node->flg.flg[1] || node->flg.flg[3])
+				(dbl->cursor)--;
 			if (dbl->sign == 1)
 				tmp[dbl->cursor++] = '-';
-			if (node->flg.flg[1] || node->flg.flg[3])
+			if ((node->flg.flg[1] || node->flg.flg[3]) && !dbl->sign)
 			{
 				if (node->flg.flg[1])
 					tmp[(dbl->cursor)++] = '+';
 				else
 					dbl->cursor++;
 			}
-			else
-			{
-				(dbl->cursor)++;
-				while (tmp[(dbl->cursor)])
-					tmp[(dbl->cursor)++] = dbl->arg[(dbl->i)++];
-			}
+			while (tmp[(dbl->cursor)])
+				tmp[(dbl->cursor)++] = dbl->arg[(dbl->i)++];
 		}
 		else
 		{
@@ -88,6 +87,8 @@ void 			conv_dbl(t_shape *node)
 					dbl->cursor++;
 			}
 			dbl->zr = dbl->len - dbl->arg_len - dbl->sign;
+		//	if (dbl->sign || node->flg.flg[1] || node->flg.flg[3])
+		//		(dbl->zr)--;
 			while (dbl->zr)
 			{
 				tmp[(dbl->cursor)++] = '0';
@@ -97,7 +98,7 @@ void 			conv_dbl(t_shape *node)
 				tmp[(dbl->cursor)++] = dbl->arg[(dbl->i)++];
 		}
 	}
-	realloc_shape(node, tmp, dbl->cursor);
+	realloc_shape(node, tmp, dbl->len);
 	free(uni);
 	free(dbl);
 }

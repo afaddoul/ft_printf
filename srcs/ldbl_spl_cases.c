@@ -6,7 +6,7 @@
 /*   By: afaddoul <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/28 17:59:46 by afaddoul          #+#    #+#             */
-/*   Updated: 2019/07/30 19:32:57 by afaddoul         ###   ########.fr       */
+/*   Updated: 2019/07/31 17:19:25 by afaddoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ char			*l_sp_case_ret(int flag)
 
 	str = NULL;
 	if (flag == -1)
-		str = ft_strdup("-inf");
+		str = ft_strdup("inf");
 	else if (flag == 0)
 		str = ft_strdup("nan");
 	else if (flag == 1)

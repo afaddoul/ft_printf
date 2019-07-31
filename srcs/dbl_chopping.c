@@ -6,7 +6,7 @@
 /*   By: afaddoul <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/28 18:11:36 by afaddoul          #+#    #+#             */
-/*   Updated: 2019/07/28 23:19:58 by afaddoul         ###   ########.fr       */
+/*   Updated: 2019/07/31 18:13:02 by afaddoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,27 +35,6 @@ void		flse_ties_to_even(t_nb *nb, t_optim *opt)
 		}
 }
 
-void		precision_false(t_shape *node, char **str, t_nb *nb, t_optim *opt)
-{
-	opt->round = (ft_strlen(nb->int_vl) - 1);
-	if (nb->frac_vl[0] > '5' && nb->frac_vl[0] <= '9')
-	{
-		opt->tmp = nb->int_vl;
-		nb->int_vl = add_op(nb->int_vl, "1");
-		free(opt->tmp);
-	}
-	else if (nb->frac_vl[0] == '5')
-		flse_ties_to_even(nb, opt);
-	*str = ft_strdup(nb->int_vl);
-	if (node->flg.flg[4])
-	{
-		opt->tmp = *str;
-		*str = ft_strjoin(*str, ".");
-		free(opt->tmp);
-	}
-	multi_free(2, nb->frac_vl, nb->int_vl);
-}
-
 void		true_ties_to_even(t_nb *nb, t_optim *opt)
 {
 	opt->i = opt->pre + 1;
@@ -81,7 +60,29 @@ void		true_ties_to_even(t_nb *nb, t_optim *opt)
 			free(opt->tmp);
 		}
 	}
+
 }
+void		precision_false(t_shape *node, char **str, t_nb *nb, t_optim *opt)
+{
+	opt->round = (ft_strlen(nb->int_vl) - 1);
+	if (nb->frac_vl[0] > '5' && nb->frac_vl[0] <= '9')
+	{
+		opt->tmp = nb->int_vl;
+		nb->int_vl = add_op(nb->int_vl, "1");
+		free(opt->tmp);
+	}
+	else if (nb->frac_vl[0] == '5')
+		flse_ties_to_even(nb, opt);
+	*str = ft_strdup(nb->int_vl);
+	if (node->flg.flg[4])
+	{
+		opt->tmp = *str;
+		*str = ft_strjoin(*str, ".");
+		free(opt->tmp);
+	}
+	multi_free(2, nb->frac_vl, nb->int_vl);
+}
+
 
 void		precision_true(t_shape *node, char **str, t_nb *nb, t_optim *opt)
 {
@@ -102,7 +103,6 @@ void		precision_true(t_shape *node, char **str, t_nb *nb, t_optim *opt)
 	}
 	else if (nb->frac_vl[opt->pre] == '5')
 		true_ties_to_even(nb, opt);
-	nb->frac_len = ft_strlen(opt->frac_cpy);
 	join_dbl_components(str, nb, opt);
 }
 

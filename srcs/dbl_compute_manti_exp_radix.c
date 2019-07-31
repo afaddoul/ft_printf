@@ -6,7 +6,7 @@
 /*   By: afaddoul <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/28 18:04:13 by afaddoul          #+#    #+#             */
-/*   Updated: 2019/07/30 23:15:29 by afaddoul         ###   ########.fr       */
+/*   Updated: 2019/07/31 11:45:55 by afaddoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ char			*extract_mantissa(unsigned long manti)
 
 void			compute_mantissa(t_helper *dbl, t_dbl f)
 {
-	int 		check;
+	int			check;
 
 	check = 0;
 	dbl->mantissa = extract_mantissa(f.dbl_d.manti);

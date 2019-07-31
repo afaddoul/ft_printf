@@ -6,7 +6,7 @@
 /*   By: afaddoul <afaddoul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/11 18:11:42 by afaddoul          #+#    #+#             */
-/*   Updated: 2019/07/31 19:36:51 by afaddoul         ###   ########.fr       */
+/*   Updated: 2019/07/31 22:22:53 by afaddoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -342,6 +342,7 @@ typedef	struct				s_conv_dbl
 	int						sign;
 	int						i;
 	int						zr;
+	int 					s_cse;
 }							t_conv_dbl;
 
 /*

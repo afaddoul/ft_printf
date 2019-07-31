@@ -6,7 +6,7 @@
 /*   By: afaddoul <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/20 13:34:29 by afaddoul          #+#    #+#             */
-/*   Updated: 2019/07/31 19:34:48 by afaddoul         ###   ########.fr       */
+/*   Updated: 2019/07/31 22:45:41 by afaddoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,8 @@ char			*dbl_dispatcher(t_shape *node)
 	dbl = NULL;
 	f.dbl = node->arg.dbl;
 	dbl_init_vars(&dbl);
+	if (node->p.pre < 0)
+		node->p.pre = 6;
 	sp_case = spl_case(f);
 	if (sp_case == -1 || sp_case == 0 || sp_case == 1)
 		return (sp_case_ret(sp_case));

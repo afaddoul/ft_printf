@@ -6,7 +6,7 @@
 /*   By: afaddoul <afaddoul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/11 18:11:42 by afaddoul          #+#    #+#             */
-/*   Updated: 2019/08/01 14:41:37 by afaddoul         ###   ########.fr       */
+/*   Updated: 2019/08/01 19:49:39 by afaddoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 # include <stdlib.h>
 # include <limits.h>
 # include <float.h>
-#include <math.h>
+# include <math.h>
 
 /*
 **-----------------------*
@@ -342,7 +342,7 @@ typedef	struct				s_conv_dbl
 	int						sign;
 	int						i;
 	int						zr;
-	int 					s_cse;
+	int						s_cse;
 }							t_conv_dbl;
 
 /*
@@ -545,5 +545,21 @@ int							l_spl_case(t_ldbl f);
 char						*l_sp_case_ret(int flag);
 void						conv_dbl(t_shape *node);
 void						conv_ldbl(t_shape *node);
+void						init_spl_cs(t_shape *node, t_dbl *uni,
+		t_conv_dbl *dbl);
+void						flg_min_true(t_shape *node, char *tmp,
+		t_conv_dbl *dbl);
+void						flg_zero_flse(t_shape *node, char *tmp,
+		t_conv_dbl *dbl);
+void						flg_zero_true(t_shape *node, char *tmp,
+		t_conv_dbl *dbl);
+void						l_init_spl_cs(t_shape *node, t_ldbl *uni,
+		t_conv_dbl *ldbl);
+void						l_flg_min_true(t_shape *node, char *tmp,
+		t_conv_dbl *ldbl);
+void						l_flg_zero_flse(t_shape *node, char *tmp,
+		t_conv_dbl *ldbl);
+void						l_flg_zero_true(t_shape *node, char *tmp,
+		t_conv_dbl *ldbl);
 
 #endif

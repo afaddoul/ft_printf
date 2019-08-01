@@ -6,7 +6,7 @@
 /*   By: afaddoul <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/28 18:11:36 by afaddoul          #+#    #+#             */
-/*   Updated: 2019/07/31 18:13:02 by afaddoul         ###   ########.fr       */
+/*   Updated: 2019/08/01 19:32:15 by afaddoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,8 +60,8 @@ void		true_ties_to_even(t_nb *nb, t_optim *opt)
 			free(opt->tmp);
 		}
 	}
-
 }
+
 void		precision_false(t_shape *node, char **str, t_nb *nb, t_optim *opt)
 {
 	opt->round = (ft_strlen(nb->int_vl) - 1);
@@ -82,7 +82,6 @@ void		precision_false(t_shape *node, char **str, t_nb *nb, t_optim *opt)
 	}
 	multi_free(2, nb->frac_vl, nb->int_vl);
 }
-
 
 void		precision_true(t_shape *node, char **str, t_nb *nb, t_optim *opt)
 {

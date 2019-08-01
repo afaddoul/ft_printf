@@ -6,7 +6,7 @@
 /*   By: afaddoul <afaddoul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/11 18:11:42 by afaddoul          #+#    #+#             */
-/*   Updated: 2019/07/31 22:22:53 by afaddoul         ###   ########.fr       */
+/*   Updated: 2019/08/01 14:41:37 by afaddoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -534,7 +534,7 @@ void						precision_false(t_shape *node, char **str,
 		t_nb *nb, t_optim *opt);
 void						flse_ties_to_even(t_nb *nb, t_optim *opt);
 char						*ldbl_dispatcher(t_shape *node);
-void						ldbl_init_vars(t_helper **ldbl);
+t_helper					*ldbl_init_vars(void);
 char						*extract_l_mantissa(unsigned long manti);
 void						l_compute_mantissa(t_helper *ldbl, t_ldbl f);
 void						l_compute_exp_radix(t_helper *ldbl, t_ldbl f);

@@ -6,26 +6,28 @@
 /*   By: afaddoul <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/28 21:31:38 by afaddoul          #+#    #+#             */
-/*   Updated: 2019/07/30 23:07:05 by afaddoul         ###   ########.fr       */
+/*   Updated: 2019/08/01 16:03:52 by afaddoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/libftprintf.h"
 
-void		ldbl_init_vars(t_helper **ldbl)
+t_helper		*ldbl_init_vars(void)
 {
-	if (!(*ldbl = (t_helper*)malloc(sizeof(t_helper))))
-		return ;
-	(*ldbl)->i = 0;
-	(*ldbl)->shift = 0;
-	(*ldbl)->len = 0;
-	(*ldbl)->radix = 0;
-	(*ldbl)->zero = ft_strdup("0");
-	(*ldbl)->one = ft_strdup("1");
-	(*ldbl)->ten = ft_strdup("10");
-	(*ldbl)->pow = NULL;
-	(*ldbl)->nbr = NULL;
-	(*ldbl)->mantissa = NULL;
-	(*ldbl)->tmp[0] = NULL;
-	(*ldbl)->tmp[1] = NULL;
+	t_helper    *ldbl;
+
+	ldbl = ft_memalloc(sizeof(t_helper));
+	(ldbl)->i = 0;
+	(ldbl)->shift = 0;
+	(ldbl)->len = 0;
+	(ldbl)->radix = 0;
+	(ldbl)->zero = ft_strdup("0");
+	(ldbl)->one = ft_strdup("1");
+	(ldbl)->ten = ft_strdup("10");
+	(ldbl)->pow = NULL;
+	(ldbl)->nbr = NULL;
+	(ldbl)->mantissa = NULL;
+	(ldbl)->tmp[0] = NULL;
+	(ldbl)->tmp[1] = NULL;
+	return (ldbl);
 }

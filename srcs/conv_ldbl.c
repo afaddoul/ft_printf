@@ -6,7 +6,7 @@
 /*   By: afaddoul <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/30 15:40:15 by afaddoul          #+#    #+#             */
-/*   Updated: 2019/07/31 17:58:16 by afaddoul         ###   ########.fr       */
+/*   Updated: 2019/08/01 16:12:10 by afaddoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,12 +27,19 @@ void			conv_ldbl(t_shape *node)
 	ldbl->arg = ldbl_dispatcher(node);
 	ldbl->arg_len = ft_strlen(ldbl->arg);
 	ldbl->len = ldbl->arg_len;
+	ldbl->s_cse = l_spl_case(*uni);
+	if (ldbl->s_cse == -1 || ldbl->s_cse == 1)
+		node->flg.flg[2] = 0;
+	if (ldbl->s_cse == 0)
+	{
+		node->flg.flg[1] = 0;
+		node->flg.flg[2] = 0;
+		node->flg.flg[3] = 0;
+	}
 	if (node->flg.flg[3] && node->flg.flg[1])
 		node->flg.flg[3] = 0;
 	if (node->flg.flg[2] && node->flg.flg[0])
 		node->flg.flg[2] = 0;
-	if (node->flg.flg[0] && node->flg.flg[1])
-		node->flg.flg[0] = 0;
 	if (node->field_w.f_w >= ldbl->arg_len)
 		ldbl->len = node->field_w.f_w;
 	else if (ldbl->arg_len > node->field_w.f_w)
@@ -48,9 +55,9 @@ void			conv_ldbl(t_shape *node)
 			tmp[ldbl->cursor++] = '-';
 		if (node->flg.flg[1] || node->flg.flg[3])
 		{
-			if (node->flg.flg[1])
+			if (node->flg.flg[1] && !ldbl->sign)
 				tmp[(ldbl->cursor)++] = '+';
-			else
+			else if (node->flg.flg[3] && !ldbl->sign)
 				ldbl->cursor++;
 		}
 		while (tmp[(ldbl->cursor)] && ldbl->arg_len--)
@@ -79,7 +86,7 @@ void			conv_ldbl(t_shape *node)
 		{
 			if (ldbl->sign == 1)
 				tmp[ldbl->cursor++] = '-';
-			if (node->flg.flg[1] || node->flg.flg[3])
+			if ((node->flg.flg[1] || node->flg.flg[3]) && !ldbl->sign)
 			{
 				if (node->flg.flg[1])
 					tmp[(ldbl->cursor)++] = '+';
@@ -87,6 +94,8 @@ void			conv_ldbl(t_shape *node)
 					ldbl->cursor++;
 			}
 			ldbl->zr = ldbl->len - ldbl->arg_len - ldbl->sign;
+			if ((node->flg.flg[1] || node->flg.flg[3]) && !ldbl->sign)
+				(ldbl->zr)--;
 			while (ldbl->zr)
 			{
 				tmp[(ldbl->cursor)++] = '0';
@@ -98,5 +107,5 @@ void			conv_ldbl(t_shape *node)
 	}
 	realloc_shape(node, tmp, ldbl->len);
 	free(uni);
-	free(ldbl);
+	multi_free(2, ldbl->arg, ldbl);
 }

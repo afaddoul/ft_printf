@@ -6,7 +6,7 @@
 /*   By: afaddoul <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/30 15:40:15 by afaddoul          #+#    #+#             */
-/*   Updated: 2019/07/31 22:47:33 by afaddoul         ###   ########.fr       */
+/*   Updated: 2019/08/01 17:07:09 by afaddoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,9 +29,7 @@ void			conv_dbl(t_shape *node)
 	dbl->len = dbl->arg_len;
 	dbl->s_cse = spl_case(*uni);
 	if (dbl->s_cse == -1 ||dbl->s_cse == 1)
-	{
 		node->flg.flg[2] = 0;
-	}
 	if (dbl->s_cse == 0)
 	{
 		node->flg.flg[1] = 0;
@@ -109,5 +107,5 @@ void			conv_dbl(t_shape *node)
 	}
 	realloc_shape(node, tmp, dbl->len);
 	free(uni);
-	free(dbl);
+	multi_free(2, dbl->arg, dbl);
 }

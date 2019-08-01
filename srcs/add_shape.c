@@ -6,7 +6,7 @@
 /*   By: afaddoul <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/14 10:43:34 by afaddoul          #+#    #+#             */
-/*   Updated: 2019/07/11 15:32:40 by afaddoul         ###   ########.fr       */
+/*   Updated: 2019/08/01 22:44:38 by afaddoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ t_shape				*add_shape(t_shape *head, int flag, t_arg *arg)
 
 	if (flag == 1)
 		index++;
-	node = (t_shape*)malloc(sizeof(t_shape));
+	node = ft_memalloc(sizeof(t_shape));
 	node = fill_node(node, arg, index, flag);
 	if (head == NULL)
 		return (first_node(node, &tmp, index));

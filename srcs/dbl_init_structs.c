@@ -6,7 +6,7 @@
 /*   By: afaddoul <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/28 21:31:38 by afaddoul          #+#    #+#             */
-/*   Updated: 2019/07/29 15:13:07 by afaddoul         ###   ########.fr       */
+/*   Updated: 2019/08/01 22:49:57 by afaddoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,7 @@
 
 void		dbl_init_vars(t_helper **dbl)
 {
-	if (!(*dbl = (t_helper*)malloc(sizeof(t_helper))))
-		return ;
+	*dbl = ft_memalloc(sizeof(t_helper));
 	(*dbl)->i = 0;
 	(*dbl)->shift = 0;
 	(*dbl)->len = 0;

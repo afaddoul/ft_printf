@@ -6,7 +6,7 @@
 /*   By: afaddoul <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/20 18:46:04 by afaddoul          #+#    #+#             */
-/*   Updated: 2019/07/10 15:07:15 by afaddoul         ###   ########.fr       */
+/*   Updated: 2019/08/01 21:19:04 by afaddoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,5 @@ void	print_conv_c(t_shape *node)
 
 	i = 0;
 	while (i < node->cv_len)
-	{
 		ft_putchar(node->shape[i++]);
-	}
 }

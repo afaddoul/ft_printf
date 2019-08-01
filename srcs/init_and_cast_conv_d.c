@@ -6,7 +6,7 @@
 /*   By: afaddoul <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/05 15:19:28 by afaddoul          #+#    #+#             */
-/*   Updated: 2019/07/11 15:48:17 by afaddoul         ###   ########.fr       */
+/*   Updated: 2019/08/01 21:28:11 by afaddoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 t_conv_d		*init_struct(t_conv_d *d)
 {
-	d = (t_conv_d*)malloc(sizeof(t_conv_d));
+	d = ft_memalloc(sizeof(t_conv_d));
 	d->zr = 0;
 	d->sign = 0;
 	d->sp = 0;
@@ -26,7 +26,7 @@ t_conv_d		*init_struct(t_conv_d *d)
 
 t_conv_x		*init_struct_x(t_conv_x *x)
 {
-	x = (t_conv_x*)malloc(sizeof(t_conv_x));
+	x = ft_memalloc(sizeof(t_conv_x));
 	x->hex = NULL;
 	x->zr = 0;
 	x->sign = 0;
@@ -39,7 +39,7 @@ t_conv_x		*init_struct_x(t_conv_x *x)
 
 t_conv_o		*init_struct_o(t_conv_o *o)
 {
-	o = (t_conv_o*)malloc(sizeof(t_conv_o));
+	o = ft_memalloc(sizeof(t_conv_o));
 	o->oct = NULL;
 	o->zr = 0;
 	o->sign = 0;

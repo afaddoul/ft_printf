@@ -6,7 +6,7 @@
 /*   By: afaddoul <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/17 18:01:06 by afaddoul          #+#    #+#             */
-/*   Updated: 2019/07/30 19:31:14 by afaddoul         ###   ########.fr       */
+/*   Updated: 2019/08/01 22:58:45 by afaddoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ static t_multi	*init_var(char **str, char **s1, char **s2)
 {
 	t_multi		*mul;
 
-	mul = (t_multi*)malloc(sizeof(t_multi));
+	mul = ft_memalloc(sizeof(t_multi));
 	mul->i = -1;
 	mul->j = 0;
 	mul->tmp = 0;

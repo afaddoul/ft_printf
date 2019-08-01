@@ -6,7 +6,7 @@
 /*   By: afaddoul <afaddoul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/18 21:22:24 by afaddoul          #+#    #+#             */
-/*   Updated: 2019/07/11 14:10:00 by afaddoul         ###   ########.fr       */
+/*   Updated: 2019/08/01 22:52:01 by afaddoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ t_arg		*ft_is_str(char *str, int *i)
 {
 	t_arg	*tmp;
 
-	tmp = (t_arg*)malloc(sizeof(t_arg));
+	tmp = ft_memalloc(sizeof(t_arg));
 	stct_init(tmp);
 	tmp->buff = ft_strnew(0);
 	while (str[*i] && (str[*i] != '%' || (str[*i] == '%' && str[*i + 1]

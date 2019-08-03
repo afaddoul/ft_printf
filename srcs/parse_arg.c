@@ -6,7 +6,7 @@
 /*   By: afaddoul <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/24 00:15:05 by afaddoul          #+#    #+#             */
-/*   Updated: 2019/08/02 18:21:49 by afaddoul         ###   ########.fr       */
+/*   Updated: 2019/08/03 12:32:08 by afaddoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,9 +72,6 @@ void				arg_filler(t_shape *lst, va_list *ap)
 
 void				parse_arg(t_shape *lst, va_list *ap)
 {
-	t_shape			*tmp;
-
-	tmp = lst;
 	while (lst)
 	{
 		if (lst->conv_flag == 1)

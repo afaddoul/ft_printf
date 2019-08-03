@@ -6,7 +6,7 @@
 /*   By: afaddoul <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/14 20:13:17 by afaddoul          #+#    #+#             */
-/*   Updated: 2019/07/20 12:25:35 by afaddoul         ###   ########.fr       */
+/*   Updated: 2019/08/02 18:21:47 by afaddoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,6 @@ static void		arg_filler(t_shape *lst, t_tmp_data **tab, int index)
 		lst->arg.p = tab[index]->p;
 	else if (tab[index]->conv == 'd')
 		lst->arg.d = tab[index]->d;
-	else if (tab[index]->conv == 'i')
-		lst->arg.i = tab[index]->i;
 	else if (tab[index]->conv == 'u')
 		lst->arg.u = tab[index]->u;
 	else if (tab[index]->conv == 'o')

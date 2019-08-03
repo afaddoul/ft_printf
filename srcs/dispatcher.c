@@ -6,7 +6,7 @@
 /*   By: afaddoul <afaddoul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/19 14:43:55 by afaddoul          #+#    #+#             */
-/*   Updated: 2019/07/31 16:29:37 by afaddoul         ###   ########.fr       */
+/*   Updated: 2019/08/02 18:16:58 by afaddoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void					index_finder(t_shape *node, int *i)
 		*i = 1;
 	else if (node->conv == 'p')
 		*i = 2;
-	else if (node->conv == 'i' || node->conv == 'd')
+	else if (node->conv == 'd' || node->conv == 'i')
 		*i = 3;
 	else if (node->conv == '%')
 		*i = 4;

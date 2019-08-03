@@ -6,7 +6,7 @@
 /*   By: afaddoul <afaddoul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/11 18:11:42 by afaddoul          #+#    #+#             */
-/*   Updated: 2019/08/01 23:01:49 by afaddoul         ###   ########.fr       */
+/*   Updated: 2019/08/02 18:08:00 by afaddoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 # include <stdarg.h>
 # include <unistd.h>
 # include <stdlib.h>
+# include <stdio.h>
 
 /*
 **-----------------------*
@@ -33,7 +34,6 @@ typedef	struct				s_tmp_data
 	char					*s;
 	void					*p;
 	long long				d;
-	long long				i;
 	unsigned long int		u;
 	unsigned long int		o;
 	unsigned long int		x;
@@ -156,7 +156,6 @@ typedef	struct				s_data
 	char					*s;
 	void					*p;
 	long long				d;
-	long long				i;
 	unsigned long int		u;
 	unsigned long int		o;
 	unsigned long int		x;
@@ -435,14 +434,6 @@ char						*cpy_arg_d(char *shape, t_shape *node,
 		t_conv_d *d);
 t_conv_d					*init_struct(t_conv_d *d);
 void						cast_type(t_shape *node);
-
-/*
-**-----------------------*
-**conv_i
-**-----------------------*
-*/
-
-void						conv_i(t_shape *node);
 
 /*
 **-----------------------*

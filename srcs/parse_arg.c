@@ -6,7 +6,7 @@
 /*   By: afaddoul <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/24 00:15:05 by afaddoul          #+#    #+#             */
-/*   Updated: 2019/07/31 16:29:00 by afaddoul         ###   ########.fr       */
+/*   Updated: 2019/08/02 18:21:49 by afaddoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,10 +52,8 @@ void				arg_filler(t_shape *lst, va_list *ap)
 		lst = s_checker(lst, ap);
 	else if (lst->conv == 'p')
 		lst = p_checker(lst, ap);
-	else if (lst->conv == 'd')
+	else if (lst->conv == 'd' || lst->conv == 'i')
 		lst->arg.d = va_arg(*ap, long long);
-	else if (lst->conv == 'i')
-		lst->arg.i = va_arg(*ap, long long);
 	else if (lst->conv == 'u')
 		lst->arg.u = va_arg(*ap, unsigned long long);
 	else if (lst->conv == 'o')

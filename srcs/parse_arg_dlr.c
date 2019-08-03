@@ -6,7 +6,7 @@
 /*   By: afaddoul <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/08 19:03:25 by afaddoul          #+#    #+#             */
-/*   Updated: 2019/07/20 12:35:30 by afaddoul         ###   ########.fr       */
+/*   Updated: 2019/08/02 18:21:09 by afaddoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,6 @@ void		parse_arg_dlr(t_tmp_data **tab, va_list *ap, int index)
 		tab[index]->p = va_arg(*ap, void*);
 	else if (tab[index]->conv == 'd')
 		tab[index]->d = va_arg(*ap, long long);
-	else if (tab[index]->conv == 'i')
-		tab[index]->i = va_arg(*ap, long long);
 	else if (tab[index]->conv == 'u')
 		tab[index]->u = va_arg(*ap, unsigned long long);
 	else if (tab[index]->conv == 'o')

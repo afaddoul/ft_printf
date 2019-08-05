@@ -6,7 +6,7 @@
 /*   By: afaddoul <afaddoul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/11 18:11:42 by afaddoul          #+#    #+#             */
-/*   Updated: 2019/08/02 18:08:00 by afaddoul         ###   ########.fr       */
+/*   Updated: 2019/08/05 13:47:19 by afaddoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -551,5 +551,6 @@ void						l_flg_zero_true(t_shape *node, char *tmp,
 void						print_conv_c_fd(t_shape *node, int fd);
 void						print_shapes_fd(t_shape *lst, int fd);
 int							ft_dprintf(int fd, const char *format, ...);
+void						*ft_memalloc_protected(size_t size);
 
 #endif

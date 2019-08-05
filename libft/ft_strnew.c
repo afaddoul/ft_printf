@@ -6,7 +6,7 @@
 /*   By: afaddoul <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/17 09:06:08 by afaddoul          #+#    #+#             */
-/*   Updated: 2018/10/23 18:44:08 by afaddoul         ###   ########.fr       */
+/*   Updated: 2019/08/05 13:39:59 by afaddoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ char	*ft_strnew(size_t size)
 
 	str = (char*)malloc(size + 1);
 	if (str == NULL)
-		return (NULL);
+		exit(0);
 	ft_memset(str, '\0', size + 1);
 	return (str);
 }

@@ -6,7 +6,7 @@
 /*   By: afaddoul <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/28 23:03:23 by afaddoul          #+#    #+#             */
-/*   Updated: 2019/08/01 11:59:24 by afaddoul         ###   ########.fr       */
+/*   Updated: 2019/08/05 13:30:09 by afaddoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ t_nb		*ft_int_frac(char *str)
 {
 	t_nb	*nb;
 
-	nb = ft_memalloc(sizeof(t_nb));
+	nb = ft_memalloc_protected(sizeof(t_nb));
 	while (str[nb->int_len] != '.' && str[nb->int_len])
 		nb->int_len++;
 	nb->int_vl = ft_strsub(str, 0, nb->int_len);

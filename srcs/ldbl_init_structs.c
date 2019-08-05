@@ -6,7 +6,7 @@
 /*   By: afaddoul <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/28 21:31:38 by afaddoul          #+#    #+#             */
-/*   Updated: 2019/08/01 19:32:48 by afaddoul         ###   ########.fr       */
+/*   Updated: 2019/08/05 13:33:06 by afaddoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ t_helper		*ldbl_init_vars(void)
 {
 	t_helper	*ldbl;
 
-	ldbl = ft_memalloc(sizeof(t_helper));
+	ldbl = ft_memalloc_protected(sizeof(t_helper));
 	(ldbl)->i = 0;
 	(ldbl)->shift = 0;
 	(ldbl)->len = 0;

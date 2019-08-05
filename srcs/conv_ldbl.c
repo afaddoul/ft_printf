@@ -6,7 +6,7 @@
 /*   By: afaddoul <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/30 15:40:15 by afaddoul          #+#    #+#             */
-/*   Updated: 2019/08/01 19:41:05 by afaddoul         ###   ########.fr       */
+/*   Updated: 2019/08/05 13:26:28 by afaddoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,8 +102,8 @@ void			conv_ldbl(t_shape *node)
 	t_ldbl		*uni;
 	t_conv_dbl	*ldbl;
 
-	uni = ft_memalloc(sizeof(t_ldbl));
-	ldbl = ft_memalloc(sizeof(t_conv_dbl));
+	uni = ft_memalloc_protected(sizeof(t_ldbl));
+	ldbl = ft_memalloc_protected(sizeof(t_conv_dbl));
 	l_init_spl_cs(node, uni, ldbl);
 	if ((ldbl->len <= ldbl->arg_len) &&
 			(node->flg.flg[1] || node->flg.flg[3] || ldbl->sign))

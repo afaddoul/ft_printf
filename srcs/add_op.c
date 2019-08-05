@@ -6,7 +6,7 @@
 /*   By: afaddoul <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/17 11:30:35 by afaddoul          #+#    #+#             */
-/*   Updated: 2019/08/01 22:42:41 by afaddoul         ###   ########.fr       */
+/*   Updated: 2019/08/05 13:23:44 by afaddoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void			swap_str(char **s1, char **s2)
 
 static void		init_var(t_add **ad, char **str, char **s1, char **s2)
 {
-	*ad = ft_memalloc(sizeof(t_add));
+	*ad = ft_memalloc_protected(sizeof(t_add));
 	(*ad)->i = 0;
 	(*ad)->sum = 0;
 	(*ad)->quotient = 0;

@@ -6,7 +6,7 @@
 /*   By: afaddoul <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/28 18:11:36 by afaddoul          #+#    #+#             */
-/*   Updated: 2019/08/01 19:32:15 by afaddoul         ###   ########.fr       */
+/*   Updated: 2019/08/05 13:28:47 by afaddoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,7 +110,7 @@ char		*ft_chopping(t_shape *node, char *str)
 	t_nb	*nb;
 	t_optim *opt;
 
-	opt = ft_memalloc(sizeof(t_optim));
+	opt = ft_memalloc_protected(sizeof(t_optim));
 	nb = ft_int_frac(str);
 	if (node->p.pre_flg && node->p.pre == 0)
 		precision_false(node, &str, nb, opt);

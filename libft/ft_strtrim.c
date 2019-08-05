@@ -6,7 +6,7 @@
 /*   By: afaddoul <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/19 15:12:42 by afaddoul          #+#    #+#             */
-/*   Updated: 2018/10/21 18:10:32 by afaddoul         ###   ########.fr       */
+/*   Updated: 2019/08/05 13:41:10 by afaddoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ char	*ft_strtrim(char const *s)
 	char			*ptr;
 
 	if (!(s))
-		return (0);
+		exit(0);
 	i = 0;
 	start = 0;
 	len = 0;

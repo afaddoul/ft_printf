@@ -6,7 +6,7 @@
 /*   By: afaddoul <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/12 15:19:10 by afaddoul          #+#    #+#             */
-/*   Updated: 2019/08/01 22:51:17 by afaddoul         ###   ########.fr       */
+/*   Updated: 2019/08/05 13:30:43 by afaddoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ t_tmp_data		**cp_data(t_shape *lst, int len)
 
 	i = 0;
 	args = NULL;
-	arr = ft_memalloc(sizeof(t_tmp_data*) * len + 1);
+	arr = ft_memalloc_protected(sizeof(t_tmp_data*) * len + 1);
 	while (lst)
 	{
 		if (lst->conv_flag == 1)

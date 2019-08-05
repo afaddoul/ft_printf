@@ -6,7 +6,7 @@
 /*   By: afaddoul <afaddoul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/18 21:22:24 by afaddoul          #+#    #+#             */
-/*   Updated: 2019/08/05 13:45:17 by afaddoul         ###   ########.fr       */
+/*   Updated: 2019/08/05 16:07:28 by afaddoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ t_arg		*ft_is_str(char *str, int *i)
 {
 	t_arg	*tmp;
 
-	if(!(tmp = (t_arg*)malloc(sizeof(t_arg))))
+	if (!(tmp = (t_arg*)malloc(sizeof(t_arg))))
 		exit(1);
 	stct_init(tmp);
 	tmp->buff = ft_strnew(0);
@@ -57,8 +57,8 @@ t_arg		*ft_is_conv(char *str, int *i)
 	t_arg	*tmp;
 	int		start;
 
-	if(!(tmp = (t_arg*)malloc(sizeof(t_arg))))
-			exit(1);
+	if (!(tmp = (t_arg*)malloc(sizeof(t_arg))))
+		exit(1);
 	stct_init(tmp);
 	tmp->buff = ft_strnew(0);
 	start = *i;
